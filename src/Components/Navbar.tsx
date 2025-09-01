@@ -54,7 +54,7 @@ export default function Navbar() {
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-6 lg:gap-10">
             {navLinks.map((link, index) => {
-              const isActive = pathname === link.path;
+              const isActive = pathname === link.href;
               return (
                 <motion.div
                   key={link.name}
@@ -63,7 +63,7 @@ export default function Navbar() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <Link
-                    href={link.path}
+                    href={link.href}
                     aria-current={isActive ? "page" : undefined}
                     className={`relative font-semibold text-[clamp(0.85rem,1vw,1rem)] tracking-wide transition-all duration-500
                       ${
@@ -97,11 +97,11 @@ export default function Navbar() {
       >
         <div className="flex justify-between items-center py-2 relative">
           {navLinks.map((link) => {
-            const isActive = pathname === link.path;
+            const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
-                href={link.path}
+                href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className="relative flex flex-col items-center gap-1 px-3 py-2 flex-1 transition-transform active:scale-90"
               >

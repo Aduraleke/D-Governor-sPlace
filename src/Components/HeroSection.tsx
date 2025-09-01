@@ -106,7 +106,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5 }}
-          className="w-full md:w-[380px] lg:w-[420px] rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl hover:shadow-yellow-400/30 transition-all duration-300 mx-auto md:mx-0"
+          className="w-full md:w-[380px] lg:w-[420px] rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl hover:shadow-yellow-400/30 transition-all duration-300 mx-auto md:mx-0 mr-4"
         >
           {/* Feature Grid */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4 p-4 sm:p-6">

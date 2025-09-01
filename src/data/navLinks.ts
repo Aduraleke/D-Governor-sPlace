@@ -1,10 +1,10 @@
 export const navLinks = [
-  { name: "Home", path: "/", icon: "mdi:home-outline" },
-  { name: "About", path: "/about", icon: "mdi:information-outline" },
-  { name: "Bookings", path: "/bookings", icon: "mdi:calendar-check-outline" },
-//   { name: "Events", path: "/events", icon: "mdi:party-popper" },
-  { name: "Bar & Lounge", path: "/bar-lounge", icon: "mdi:glass-cocktail" },
-  { name: "Apartments", path: "/apartments", icon: "mdi:bed-outline" },
-//   { name: "Gallery", path: "/gallery", icon: "mdi:image-multiple-outline" },
-  { name: "Contact", path: "/contact", icon: "mdi:phone-outline" },
+  { name: "Home", href: "#", icon: "mdi:home-outline" },
+  { name: "About", href: "#about", icon: "mdi:information-outline" },
+  { name: "Bookings", href: "#bookings", icon: "mdi:calendar-check-outline" },
+//   { name: "Events", href: "#events", icon: "mdi:party-popper" },
+  // { name: "Bar & Lounge", href: "#bar-lounge", icon: "mdi:glass-cocktail" },
+  { name: "Apartments", href: "#apartments", icon: "mdi:bed-outline" },
+//   { name: "Gallery", href: "#gallery", icon: "mdi:image-multiple-outline" },
+  { name: "Contact", href: "#contact", icon: "mdi:phone-outline" },
 ];
