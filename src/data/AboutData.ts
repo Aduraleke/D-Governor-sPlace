@@ -14,7 +14,12 @@ export const features = [
     icon: "mdi:microphone-variant",
     title: "Karaoke: Live & Online",
     desc: "Unleash your inner star with karaoke nights, whether live on stage or streamed online.",
-    slides: ["/karaoke1.jpg", "/karaoke3.jpg", "/karaoke4.jpeg", "/karaoke5.jpg"],
+    slides: [
+      "/karaoke1.jpg",
+      "/karaoke3.jpg",
+      "/karaoke4.jpeg",
+      "/karaoke5.jpg",
+    ],
     details: [
       "Wide range of songs from classics to trending hits",
       "Join solo or duet with friends",
@@ -25,7 +30,7 @@ export const features = [
     icon: "mdi:glass-cocktail",
     title: "Small Chops & Cocktails",
     desc: "Gourmet finger foods and premium cocktails crafted by our in-house chef & mixologists.",
-    slides: ["/Heroimage.jpg", "/pizza.jpg", "/Heroimage.jpg", "/pizza.jpg"],
+    slides: ["/Heroimage.jpg", "/chops1.jpg", "/chops2.jpg", "/pizza.jpg"],
     details: [
       "Chef-inspired tasteful bites",
       "Cocktails with fresh ingredients",
@@ -37,10 +42,10 @@ export const features = [
     title: "Luxury Short-Let Apartments",
     desc: "Modern comfort with elegant interiors and breathtaking city views for extended stays.",
     slides: [
-      "/apartment1.webp",
-      "/bedroom.jpg",
-      "/apartment1.webp",
-      "/bedroom.jpg",
+      "/Apartment2.jpeg",
+      "/Apartment8.jpeg",
+      "/Apartment4.jpeg",
+      "/Apartment5.jpeg",
     ],
     details: [
       "Fully furnished apartments",

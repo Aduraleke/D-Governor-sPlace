@@ -34,7 +34,7 @@ export default function AboutSection() {
   const initialState = reduceMotion ? "show" : "hidden";
   const whileInViewState = reduceMotion ? undefined : "show";
 
-  const timeAutoNext = 1000;
+  const timeAutoNext = 2000;
 
   useEffect(() => {
     const id = setInterval(() => {
