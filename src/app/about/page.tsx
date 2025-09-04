@@ -53,10 +53,7 @@ export default function AboutSection() {
   const feature = features[featureIndex];
 
   return (
-    <section
-      id="about"
-      className="relative w-full bg-gradient-to-b from-black via-black/95 to-black text-white overflow-hidden"
-    >
+    <section className="relative w-full bg-gradient-to-b from-black via-black/95 to-black text-white min-h-screen ">
       {/* Decorative glowing blobs */}
       <div
         aria-hidden
@@ -82,6 +79,7 @@ export default function AboutSection() {
                 src={feature.slides[slideIndex]}
                 alt={feature.title}
                 fill
+                quality={75}
                 priority
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -105,6 +103,7 @@ export default function AboutSection() {
                   src={feature.slides[(slideIndex + 1) % feature.slides.length]}
                   alt="Preview"
                   fill
+                  quality={75}
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20" />

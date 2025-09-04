@@ -30,7 +30,7 @@ export const features = [
     icon: "mdi:glass-cocktail",
     title: "Small Chops & Cocktails",
     desc: "Gourmet finger foods and premium cocktails crafted by our in-house chef & mixologists.",
-    slides: ["/Heroimage.jpg", "/chops1.jpg", "/chops2.jpg", "/pizza.jpg"],
+    slides: ["/Heroimage.jpg", "/chops1.jpg", "/chops2.jpg", "/pizza1.jpg"],
     details: [
       "Chef-inspired tasteful bites",
       "Cocktails with fresh ingredients",
@@ -59,4 +59,27 @@ export const stats = [
   { value: "2k+", label: "Happy Guests" },
   { value: "150+", label: "Live Events" },
   { value: "5★", label: "Guest Ratings" },
+];
+
+export const herofeatures = [
+  {
+    icon: "mdi:music",
+    title: "Entertainment",
+    description: "Unwind with live bands & unforgettable DJ nights.",
+  },
+  {
+    icon: "mdi:microphone-variant",
+    title: "Karaoke",
+    description: "Sing your heart out live and stream online.",
+  },
+  {
+    icon: "mdi:glass-cocktail",
+    title: "Food & Drinks",
+    description: "Indulge in tasty small chops & refreshing cocktails.",
+  },
+  {
+    icon: "mdi:bed",
+    title: "Stay With Us",
+    description: "Relax in our luxury short-let apartments.",
+  },
 ];

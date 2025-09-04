@@ -4,11 +4,19 @@ import { FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 
-const BookingToasts: FC<{
+interface BookingToastsProps {
   success: boolean;
+  successMessage?: string; // <-- success message prop
   error: string | null;
   onDismiss: () => void;
-}> = ({ success, error, onDismiss }) => (
+}
+
+const BookingToasts: FC<BookingToastsProps> = ({
+  success,
+  successMessage = "Booking request sent!", // default message
+  error,
+  onDismiss,
+}) => (
   <div className="fixed top-6 right-6 z-50">
     <AnimatePresence>
       {success && (
@@ -19,9 +27,7 @@ const BookingToasts: FC<{
           className="flex items-center gap-3 rounded-2xl border border-yellow-400/40 bg-black/70 px-4 py-3 shadow-xl"
         >
           <Icon icon="ph:check-circle" className="h-6 w-6 text-yellow-400" />
-          <p className="text-sm text-yellow-100">
-            Booking request sent! Redirecting to profile...
-          </p>
+          <p className="text-sm text-yellow-100">{successMessage}</p>
         </motion.div>
       )}
     </AnimatePresence>

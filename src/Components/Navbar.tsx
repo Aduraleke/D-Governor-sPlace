@@ -1,17 +1,30 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/data/navLinks";
 import { motion } from "framer-motion";
+import { useTransition } from "react";
+import Loader from "./Loader";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
+  const handleClick = (href: string) => {
+    if (href !== pathname) {
+      startTransition(() => {
+        router.push(href);
+      });
+    }
+  };
 
   return (
     <>
+      <Loader show={isPending} />
+
       {/* Top Navbar (Desktop) */}
       <motion.nav
         role="navigation"
@@ -39,6 +52,7 @@ export default function Navbar() {
               width={36}
               height={36}
               priority
+              quality={75}
               className="rounded-full w-8 sm:w-9 md:w-10"
               sizes="(max-width: 768px) 32px, 36px"
             />
@@ -62,8 +76,8 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <Link
-                    href={link.href}
+                  <button
+                    onClick={() => handleClick(link.href)}
                     aria-current={isActive ? "page" : undefined}
                     className={`relative font-semibold text-[clamp(0.85rem,1vw,1rem)] tracking-wide transition-all duration-500
                       ${
@@ -78,7 +92,7 @@ export default function Navbar() {
                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f3ce00] focus-visible:ring-offset-2`}
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </motion.div>
               );
             })}
@@ -99,9 +113,9 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
-              <Link
+              <button
                 key={link.name}
-                href={link.href}
+                onClick={() => handleClick(link.href)}
                 aria-current={isActive ? "page" : undefined}
                 className="relative flex flex-col items-center gap-1 px-3 py-2 flex-1 transition-transform active:scale-90"
               >
@@ -126,7 +140,7 @@ export default function Navbar() {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   />
                 )}
-              </Link>
+              </button>
             );
           })}
         </div>
@@ -134,4 +148,3 @@ export default function Navbar() {
     </>
   );
 }
-

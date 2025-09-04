@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black/90 backdrop-blur-lg border-t border-white/10 text-gray-300">
+    <footer className="relative bg-black/90 backdrop-blur-lg border-t border-white/10 text-gray-300 ">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-14">
         {/* Branding */}
@@ -31,6 +31,7 @@ export default function Footer() {
               width={40}
               height={40}
               priority
+              quality={75}
               className="rounded-full w-9 sm:w-10 md:w-11"
               sizes="(max-width: 768px) 32px, 36px"
             />
@@ -59,8 +60,8 @@ export default function Footer() {
             {[
               { name: "Home", path: "/" },
               { name: "About Us", path: "/about" },
-              { name: "Menu", path: "/menu" },
-              { name: "Reservations", path: "/reservations" },
+              { name: "Bookings", path: "/bookings" },
+              { name: "Apartments", path: "/apartments" },
               { name: "Contact", path: "/contact" },
             ].map((link, index) => (
               <li key={index}>
@@ -96,7 +97,7 @@ export default function Footer() {
                 href="tel:+2348001234567"
                 className="hover:text-yellow-400 transition-colors duration-300"
               >
-                +234 800 123 4567
+                +234 802 639 3322
               </a>
             </li>
             <li className="flex items-center gap-3">
@@ -143,9 +144,12 @@ export default function Footer() {
 
       {/* Divider */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
       {/* Bottom Footer */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-gray-400 text-xs sm:text-sm">
+      <div
+        className="max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 
+             py-6 pb-20 flex flex-col sm:flex-row items-center 
+             justify-between gap-3 text-gray-400 text-xs sm:text-sm"
+      >
         <p>
           &copy; {new Date().getFullYear()} D&apos;Governor’s Place. All rights
           reserved.

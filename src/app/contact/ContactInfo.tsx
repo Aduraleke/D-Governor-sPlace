@@ -53,7 +53,7 @@ export default function ContactInfo() {
                 href="tel:+2340000000000"
                 className="text-yellow-400 hover:underline text-sm break-all"
               >
-                +234 (0) 00 000 00000
+                +234 802 639 3322
               </a>
               <div className="text-gray-400 text-xs mt-1">
                 09:00–22:00 (daily)
@@ -69,7 +69,7 @@ export default function ContactInfo() {
           description="Quick chats for bookings & questions."
           content={
             <Link
-              href="https://wa.me/2340000000000"
+              href="https://wa.me/2348026393322"
               target="_blank"
               className="inline-flex items-center gap-2 text-sm text-yellow-400 hover:underline"
             >

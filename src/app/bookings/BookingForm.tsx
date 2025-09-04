@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { Icon } from "@iconify/react";
-import { FormState } from "./Booking";
+import { FormState } from "./page";
 
 // shared input style
 const inputCls =
@@ -121,7 +121,7 @@ const IconTextarea: FC<{
 // -----------------------------
 // BookingForm
 // -----------------------------
-const apartments = ["Studio", "1 Bedroom", "2 Bedroom", "Penthouse"];
+const apartments = ["Studio", "1 Bedrooms", "2 Bedrooms", "Larger-multi Bedrooms"];
 
 const BookingForm: FC<{
   state: FormState;

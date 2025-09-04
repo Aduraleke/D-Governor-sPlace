@@ -55,7 +55,7 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export default function Booking() {
+export default function Page() {
   const [state, dispatch] = useReducer(reducer, initialForm);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -94,19 +94,20 @@ export default function Booking() {
     setError(null);
     setSubmitting(true);
 
+   
     try {
       // TODO: replace with API call
       await new Promise((r) => setTimeout(r, 800));
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
-        window.location.href = "/profile";
       }, 1500);
     } catch {
       setError("Submission failed. Try again.");
     } finally {
       setSubmitting(false);
     }
+
   }
 
   return (
@@ -179,7 +180,7 @@ export default function Booking() {
 
               {/* Right side */}
               <a
-                href="tel:+2348127336515"
+                href="tel:+2348026393322"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-yellow-400 px-5 py-2 text-sm sm:text-base font-semibold text-yellow-400 hover:bg-yellow-400 hover:text-black transition hover:scale-105"
               >
                 <Icon icon="mdi:phone" className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
