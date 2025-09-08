@@ -3,18 +3,16 @@
 import React, { useReducer, useState, useMemo, useCallback } from "react";
 import { motion, Variants } from "framer-motion";
 import BookingForm from "./BookingForm";
-import StudioBookingForm from "./StudioBookingForm"; // ✅ import
+import StudioBookingForm from "./StudioBookingForm";
 import BookingPreview from "./BookingPreview";
 import BookingToasts from "./BookingToast";
 import { Icon } from "@iconify/react";
 import StudioPreview from "./StudioPreview";
 
-
-
 // ---- Shared Form state ----
 export type FormState = {
   date: string;
-  nights?: number; // ✅ optional for studio
+  nights?: number;
   apartment?: string;
   sessionType?: string;
   duration?: number;
@@ -69,14 +67,11 @@ const item: Variants = {
 
 // ---- Main Page ----
 export default function Page() {
-  // Tab state
   const [tab, setTab] = useState<"apartments" | "studio">("apartments");
 
-  // Separate reducers for each form
   const [aptState, aptDispatch] = useReducer(reducer, initialForm);
   const [studioState, studioDispatch] = useReducer(reducer, initialForm);
 
-  // Shared UI state
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -122,7 +117,6 @@ export default function Page() {
     setSubmitting(true);
 
     try {
-      // TODO: replace with API call
       await new Promise((r) => setTimeout(r, 800));
       setSuccess(true);
       setTimeout(() => setSuccess(false), 1500);
@@ -155,26 +149,45 @@ export default function Page() {
       />
 
       <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-20 lg:py-28">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-yellow-400">
+            Book Your Experience
+          </h2>
+          <p className="mt-3 text-gray-300 max-w-2xl mx-auto">
+            Whether you’re planning a stay in our luxury apartments or a
+            creative studio session, fill in your details below and preview your
+            booking instantly.
+          </p>
+        </motion.div>
+
         {/* Tabs */}
-        <div className="mb-8 flex gap-4">
+        <div className="mb-10 flex justify-center gap-6">
           <button
             onClick={() => setTab("apartments")}
-            className={`px-4 py-2 rounded-full border ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full border text-sm sm:text-base transition-all ${
               tab === "apartments"
-                ? "bg-yellow-400 text-black border-yellow-400"
-                : "border-white/20 text-gray-300 hover:text-white"
+                ? "bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105"
+                : "border-white/20 text-gray-300 hover:text-white hover:border-yellow-400"
             }`}
           >
+            <Icon icon="mdi:home-city" className="h-5 w-5" />
             Apartments
           </button>
           <button
             onClick={() => setTab("studio")}
-            className={`px-4 py-2 rounded-full border ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full border text-sm sm:text-base transition-all ${
               tab === "studio"
-                ? "bg-yellow-400 text-black border-yellow-400"
-                : "border-white/20 text-gray-300 hover:text-white"
+                ? "bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105"
+                : "border-white/20 text-gray-300 hover:text-white hover:border-yellow-400"
             }`}
           >
+            <Icon icon="mdi:camera-enhance" className="h-5 w-5" />
             Studio Session
           </button>
         </div>
@@ -210,13 +223,23 @@ export default function Page() {
 
           {/* Preview */}
           <motion.div variants={item}>
-            {tab === "apartments" ? (
-              <BookingPreview summary={summary} />
-            ) : (
-              <StudioPreview summary={summary}/>
-            )}
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-lg">
+              {tab === "apartments" ? (
+                <BookingPreview summary={summary} />
+              ) : (
+                <StudioPreview summary={summary} />
+              )}
+            </div>
           </motion.div>
         </motion.div>
+
+        {/* Notes */}
+        <p className="mt-10 text-center text-xs text-gray-400">
+          * Check-in for apartments starts at{" "}
+          <span className="text-yellow-400">2PM</span>. Studio sessions are
+          available in hourly slots. Cancellations must be made at least{" "}
+          <span className="text-yellow-400">24 hours</span> in advance.
+        </p>
 
         {/* Assistance Card */}
         <motion.div
@@ -226,7 +249,7 @@ export default function Page() {
           viewport={{ once: true }}
           className="mt-12 flex w-full justify-center px-4"
         >
-          <div className="w-full max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-lg">
+          <div className="w-full max-w-3xl rounded-2xl border border-white/10 bg-gradient-to-r from-white/5 to-white/10 backdrop-blur p-6 sm:p-8 shadow-xl">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-center sm:text-left">
                 <div className="flex justify-center sm:justify-start mb-2 sm:mb-0">
