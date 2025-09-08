@@ -103,19 +103,13 @@ export default function HeroSection() {
             className="mt-6 flex flex-col sm:flex-row gap-4"
           >
             <Link
-              href="/reservations"
+              href="/bookings"
               className="px-6 py-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 text-black font-semibold shadow-lg hover:scale-105 hover:shadow-yellow-400/50 transition-all flex items-center gap-2"
             >
               <Icon icon="mdi:calendar-star" className="w-5 h-5" />
               Reserve Now
             </Link>
-            <Link
-              href="/menu"
-              className="px-6 py-3 rounded-full bg-white/10 border border-yellow-400/40 text-yellow-300 font-semibold backdrop-blur-md hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all flex items-center gap-2"
-            >
-              <Icon icon="mdi:silverware-fork-knife" className="w-5 h-5" />
-              Explore Menu
-            </Link>
+           
           </motion.div>
         </motion.div>
 

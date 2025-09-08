@@ -1,12 +1,54 @@
 "use client";
 
 import React, { useReducer, useState, useMemo, useCallback } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import BookingForm from "../bookings/BookingForm";
 import BookingPreview from "../bookings/BookingPreview";
 import BookingToasts from "../bookings/BookingToast";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 
+// Apartments Data
+const apartments = [
+  {
+    id: 1,
+    src: "/Apartment5.jpeg",
+    name: "Luxury Studio",
+    desc: "Perfect for solo travelers.",
+  },
+  {
+    id: 2,
+    src: "/Apartment9.jpeg",
+    name: "Modern Apartment",
+    desc: "Spacious and elegant.",
+  },
+  {
+    id: 3,
+    src: "/apartment1.webp",
+    name: "Elegant Suite",
+    desc: "For couples and comfort.",
+  },
+  {
+    id: 4,
+    src: "/Apartment2.jpeg",
+    name: "Premium Loft",
+    desc: "Open space with views.",
+  },
+  {
+    id: 5,
+    src: "/Apartment6.jpeg",
+    name: "Urban Comfort",
+    desc: "Relax in the city center.",
+  },
+  {
+    id: 6,
+    src: "/Apartment4.jpeg",
+    name: "Classic Apartment",
+    desc: "Timeless design feel.",
+  },
+];
+
+// Form State
 export type FormState = {
   date: string;
   nights: number;
@@ -41,19 +83,6 @@ function reducer(state: FormState, action: Action): FormState {
       return state;
   }
 }
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.18 },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function Page() {
   const [state, dispatch] = useReducer(reducer, initialForm);
@@ -95,12 +124,9 @@ export default function Page() {
     setSubmitting(true);
 
     try {
-      // TODO: replace with API call
       await new Promise((r) => setTimeout(r, 800));
       setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-      }, 1500);
+      setTimeout(() => setSuccess(false), 1500);
     } catch {
       setError("Submission failed. Try again.");
     } finally {
@@ -113,16 +139,6 @@ export default function Page() {
       id="booking"
       className="relative w-full overflow-hidden bg-gradient-to-b from-black via-black/95 to-black text-white"
     >
-      {/* Blobs */}
-      <div
-        aria-hidden
-        className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-yellow-500/10 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-0 -right-24 h-80 w-80 rounded-full bg-yellow-500/10 blur-3xl"
-      />
-
       <BookingToasts
         success={success}
         error={error}
@@ -130,59 +146,101 @@ export default function Page() {
       />
 
       <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-20 lg:py-28">
-        {/* Booking Grid */}
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 gap-10 lg:grid-cols-[3fr_2fr] lg:gap-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="mb-24"
         >
-          <motion.div variants={item}>
-            <BookingForm
-              state={state}
-              setField={setField}
-              onSubmit={handleSubmit}
-              onReset={() => dispatch({ type: "reset" })}
-              submitting={submitting}
-            />
-          </motion.div>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+            Explore Our Apartments
+          </h2>
 
-          <motion.div variants={item}>
-            <BookingPreview summary={summary} />
-          </motion.div>
+          <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {apartments.map((apt) => (
+              <motion.div
+                key={apt.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                onClick={() => setField("apartment", apt.name)}
+                className="relative min-w-[90%] sm:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%] snap-center rounded-3xl overflow-hidden cursor-pointer group shadow-2xl"
+              >
+                {/* Apartment Image */}
+                <Image
+                  src={apt.src}
+                  alt={apt.name}
+                  width={600}
+                  height={400}
+                  className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+
+                {/* Glass Overlay */}
+                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6">
+                  <h3 className="text-2xl font-bold text-yellow-300">
+                    {apt.name}
+                  </h3>
+                  <p className="text-sm text-gray-200 mt-1">{apt.desc}</p>
+                </div>
+
+                {/* Selected badge */}
+                {state.apartment === apt.name && (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute top-5 right-5 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md"
+                  >
+                    Selected
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Assistance Card (centered, full width) */}
+        {/* Booking Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 gap-10 lg:grid-cols-[3fr_2fr] lg:gap-16"
+        >
+          <BookingForm
+            state={state}
+            setField={setField}
+            onSubmit={handleSubmit}
+            onReset={() => dispatch({ type: "reset" })}
+            submitting={submitting}
+          />
+
+          <BookingPreview summary={summary} />
+        </motion.div>
+
+        {/* Concierge Assistance */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-12 flex w-full justify-center px-4"
+          className="mt-16 flex w-full justify-center px-4"
         >
-          <div className="w-full max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-lg">
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-              {/* Left side */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-center sm:text-left">
-                <div className="flex justify-center sm:justify-start mb-2 sm:mb-0">
-                  <Icon
-                    icon="mdi:lifebuoy"
-                    className="h-7 w-7 text-yellow-400"
-                  />
-                </div>
-                <p className="text-sm sm:text-base text-gray-200 max-w-xs sm:max-w-none">
-                  Need assistance? Our concierge team is available 24/7.
+          <div className="w-full max-w-3xl backdrop-blur-md rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+              <div className="flex items-center gap-3 text-center sm:text-left">
+                <Icon icon="mdi:lifebuoy" className="h-7 w-7 text-yellow-400" />
+                <p className="text-sm sm:text-base text-gray-200">
+                  Need help? Our concierge team is available 24/7.
                 </p>
               </div>
 
-              {/* Right side */}
               <a
-                href="tel:+2348127336515"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-yellow-400 px-5 py-2 text-sm sm:text-base font-semibold text-yellow-400 hover:bg-yellow-400 hover:text-black transition hover:scale-105"
+                href="tel:+2348026393322"
+                className="inline-flex items-center justify-center rounded-full border border-yellow-400 px-6 py-2 text-sm sm:text-base font-semibold text-yellow-400 hover:bg-yellow-400 hover:text-black transition hover:scale-105"
               >
-                <Icon icon="mdi:phone" className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
-                Call us
+                <Icon icon="mdi:phone" className="mr-2 h-5 w-5" />
+                Call Us
               </a>
             </div>
           </div>

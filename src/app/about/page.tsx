@@ -53,7 +53,7 @@ export default function AboutSection() {
   const feature = features[featureIndex];
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-black via-black/95 to-black text-white min-h-screen ">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-black via-black/95 to-black text-white min-h-screen ">
       {/* Decorative glowing blobs */}
       <div
         aria-hidden
@@ -188,13 +188,13 @@ export default function AboutSection() {
               className="mt-7 flex flex-col sm:flex-row gap-4"
             >
               <Link
-                href="/reservations"
+                href="/bookings"
                 className="px-6 py-3 rounded-full bg-yellow-400 text-black text-sm sm:text-base font-semibold shadow-lg hover:shadow-yellow-500/40 hover:scale-105 transition-transform duration-300 text-center"
               >
                 Book a Table
               </Link>
               <Link
-                href="/apartments"
+                href="/apartment"
                 className="px-6 py-3 rounded-full bg-transparent border-2 border-yellow-400 text-yellow-400 text-sm sm:text-base font-semibold hover:bg-yellow-400 hover:text-black hover:scale-105 transition-transform duration-300 text-center"
               >
                 View Apartments
