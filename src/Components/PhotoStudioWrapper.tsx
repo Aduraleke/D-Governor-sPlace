@@ -10,7 +10,7 @@ export default function PhotoStudioWrapper() {
   let files: string[] = [];
   try {
     files = fs.readdirSync(imagesDir);
-  } catch (error) {
+  } catch  {
     console.warn("⚠️ No photostudio folder found in /public");
   }
 
