@@ -79,35 +79,42 @@ const IconSelect: FC<{
   value?: string;
   onChange: (v: string) => void;
   options: string[];
-}> = ({ id, label, icon, value = "", onChange, options }) => (
-  <div className="col-span-1">
-    <label htmlFor={id} className="mb-1 block text-xs text-gray-300">
-      {label}
-    </label>
-    <div className="relative">
-      <Icon
-        icon={icon}
-        className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-      />
-      <select
-        id={id}
-        name={id}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={inputCls}
-      >
-        <option value="" disabled>
-          Select an option
-        </option>
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
+}> = ({ id, label, icon, value = "", onChange, options }) => {
+  const hasValue = value !== "" && value !== undefined && value !== null;
+
+  return (
+    <div className="col-span-1">
+      <label htmlFor={id} className="mb-1 block text-xs text-gray-300">
+        {label}
+      </label>
+      <div className="relative">
+        <Icon
+          icon={icon}
+          className={`absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 transition-opacity pointer-events-none ${
+            hasValue ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        <select
+          id={id}
+          name={id}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className={inputCls}
+        >
+          <option value="" disabled>
+            Select an option
           </option>
-        ))}
-      </select>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 const IconTextarea: FC<{
   id: string;
