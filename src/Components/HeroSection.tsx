@@ -53,7 +53,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="uppercase tracking-[3px] text-yellow-400 text-[10px] sm:text-xs md:text-sm font-semibold mt-16 md:mt-0"
+            className="uppercase tracking-[3px] text-yellow-400 text-[10px] sm:text-xs md:text-sm font-semibold mt-20 md:mt-0"
           >
             Luxury • Music • Lifestyle • Port Harcourt
           </motion.span>
@@ -211,7 +211,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 flex justify-center md:justify-start"
+            className="mt-6 flex justify-center md:justify-start mb-6"
           >
             <Link
               href="/studio"

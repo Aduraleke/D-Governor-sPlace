@@ -92,7 +92,7 @@ export default function ContactInfo() {
               href="mailto:info@dgovernorsplace.com"
               className="text-yellow-400 hover:underline text-sm break-words max-w-full block"
             >
-              info@dgovernorsplace.com
+              dgovernorsplace@gmail.com
             </a>
           }
         />
