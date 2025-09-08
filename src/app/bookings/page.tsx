@@ -235,9 +235,7 @@ export default function Page() {
 
         {/* Notes */}
         <p className="mt-10 text-center text-xs text-gray-400">
-          * Check-in for apartments starts at{" "}
-          <span className="text-yellow-400">2PM</span>. Studio sessions are
-          available in hourly slots. Cancellations must be made at least{" "}
+          * Cancellations must be made at least{" "}
           <span className="text-yellow-400">24 hours</span> in advance.
         </p>
 
