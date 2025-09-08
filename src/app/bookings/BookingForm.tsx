@@ -19,12 +19,12 @@ const IconInput: FC<{
   label: string;
   icon: string;
   type?: string;
-  value?: string | number | null;
+  value: string | number;
   onChange: (v: string) => void;
-  min?: number | string;
-  max?: number | string;
+  min?: number;
+  max?: number;
   required?: boolean;
-  autoComplete?: string;
+  autoComplete?: string; // <-- add this
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
 }> = ({
   id,
@@ -38,32 +38,38 @@ const IconInput: FC<{
   required,
   autoComplete,
   inputMode,
-}) => (
-  <div className="col-span-1">
-    <label htmlFor={id} className="mb-1 block text-xs text-gray-300">
-      {label}
-    </label>
-    <div className="relative">
-      <Icon
-        icon={icon}
-        className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-      />
-      <input
-        id={id}
-        name={id}
-        value={value == null ? "" : String(value)}
-        onChange={(e) => onChange(e.target.value)}
-        type={type}
-        min={min}
-        max={max}
-        required={required}
-        autoComplete={autoComplete}
-        inputMode={inputMode}
-        className={inputCls}
-      />
+}) => {
+  const hasValue = value !== "" && value !== undefined && value !== null;
+
+  return (
+    <div className="col-span-1">
+      <label htmlFor={id} className="mb-1 block text-xs text-gray-300">
+        {label}
+      </label>
+      <div className="relative">
+        <Icon
+          icon={icon}
+          className={`absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 transition-opacity pointer-events-none
+            peer-focus:opacity-0 ${hasValue ? "opacity-0" : "opacity-100"}`}
+        />
+        <input
+          id={id}
+          name={id}
+          value={String(value ?? "")}
+          onChange={(e) => onChange(e.target.value)}
+          type={type}
+          min={min}
+          max={max}
+          required={required}
+          autoComplete={autoComplete} // <-- forward the prop
+          inputMode={inputMode} // <-- forward if passed
+          className={`${inputCls} peer`}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 
 const IconSelect: FC<{
