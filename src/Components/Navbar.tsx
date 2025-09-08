@@ -41,6 +41,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
+            onClick={() => handleClick("/")}
             className="flex items-center gap-2 sm:gap-3 cursor-pointer"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -58,8 +59,8 @@ export default function Navbar() {
             />
             <h1
               className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-wide 
-                         bg-gradient-to-r from-[#f3ce00] via-yellow-400 to-[#f3ce00] 
-                         text-transparent bg-clip-text drop-shadow-lg"
+               bg-gradient-to-r from-[#f3ce00] via-yellow-400 to-[#f3ce00] 
+               text-transparent bg-clip-text drop-shadow-lg"
             >
               D&apos;Governor’sPlace
             </h1>

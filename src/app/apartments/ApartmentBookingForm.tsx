@@ -209,7 +209,7 @@ const BookingForm: FC<{
           label="Nights"
           icon="mdi:moon-waning-crescent"
           type="number"
-          value={state.nights || ""}
+          value={state.nights}
           onChange={(v) => setField("nights", Number(v))}
           min={1}
           max={60}

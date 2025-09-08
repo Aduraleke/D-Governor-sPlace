@@ -41,7 +41,7 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000); // change every 4s
+    }, 4000); // change every 4s
     return () => clearInterval(timer);
   }, []);
 

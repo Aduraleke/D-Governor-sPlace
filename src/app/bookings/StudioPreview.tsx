@@ -5,43 +5,43 @@ import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const slides = [
-  "/Apartment2.jpeg",
-  "/Apartment8.jpeg",
-  "/Apartment4.jpeg",
-  "/Apartment5.jpeg",
+const studioSlides = [
+  "/photostudio/studio.jpg",
+  "/photostudio/studio1.jpg",
+  "/photostudio/studio2.jpg",
+  "/photostudio/studio4.jpg",
 ];
 
-const perks = [
+const studioPerks = [
   {
-    icon: "mdi:silverware-fork-knife",
-    title: "Chef-crafted menus",
-    desc: "Seasonal plates, curated wine list, and signature cocktails.",
+    icon: "mdi:lightbulb-on-outline",
+    title: "Professional Lighting",
+    desc: "Softboxes, LED panels, and ring lights included.",
   },
   {
-    icon: "mdi:bed-king-outline",
-    title: "Premium apartments",
-    desc: "Modern interiors, city views, and 24/7 concierge support.",
+    icon: "mdi:microphone-variant",
+    title: "Audio Equipment",
+    desc: "High-quality microphones and soundproof setup.",
   },
   {
-    icon: "mdi:music",
-    title: "Live entertainment",
-    desc: "Weekend sessions with DJs and acoustic nights.",
+    icon: "mdi:camera-outline",
+    title: "Studio Gear",
+    desc: "Camera stands, tripods, and backdrops available.",
   },
   {
-    icon: "mdi:map-marker-radius-outline",
-    title: "Central location",
-    desc: "Easy access and secure parking for all guests.",
+    icon: "mdi:account-group",
+    title: "Creative Space",
+    desc: "Perfect for teams, artists, and content creators.",
   },
 ];
 
-const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
+const StudioPreview: FC<{ summary: string }> = ({ summary }) => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000); // change every 4s
+      setCurrent((prev) => (prev + 1) % studioSlides.length);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -51,7 +51,7 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
         {/* Background images slideshow */}
         <AnimatePresence>
           <motion.div
-            key={slides[current]}
+            key={studioSlides[current]}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -59,8 +59,8 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
             className="absolute inset-0"
           >
             <Image
-              src={slides[current]}
-              alt="Apartment preview"
+              src={studioSlides[current]}
+              alt="Studio preview"
               fill
               className="object-cover rounded-t-2xl"
               priority
@@ -82,7 +82,7 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-widest text-yellow-400">
-                Apartment
+                Studio Session
               </p>
               <p className="mt-1 text-sm text-gray-100">{summary}</p>
             </div>
@@ -96,7 +96,7 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
 
       {/* Perks */}
       <div className="grid grid-cols-1 gap-4 bg-white/5 p-5 sm:grid-cols-2">
-        {perks.map((f, idx) => (
+        {studioPerks.map((f, idx) => (
           <div
             key={idx}
             className="rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition"
@@ -115,4 +115,4 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
   );
 };
 
-export default BookingPreview;
+export default StudioPreview;

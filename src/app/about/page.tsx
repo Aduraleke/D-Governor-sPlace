@@ -194,7 +194,7 @@ export default function AboutSection() {
                 Book a Table
               </Link>
               <Link
-                href="/apartment"
+                href="/apartments"
                 className="px-6 py-3 rounded-full bg-transparent border-2 border-yellow-400 text-yellow-400 text-sm sm:text-base font-semibold hover:bg-yellow-400 hover:text-black hover:scale-105 transition-transform duration-300 text-center"
               >
                 View Apartments

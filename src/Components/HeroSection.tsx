@@ -63,7 +63,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-snug sm:leading-tight drop-shadow-lg mt-3 sm:mt-4 text-center md:text-left"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight sm:leading-[1.1] md:leading-[1.05] drop-shadow-lg mt-3 sm:mt-4 text-center md:text-left"
           >
             Welcome to{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 animate-gradient-shimmer">
@@ -109,7 +109,6 @@ export default function HeroSection() {
               <Icon icon="mdi:calendar-star" className="w-5 h-5" />
               Reserve Now
             </Link>
-           
           </motion.div>
         </motion.div>
 

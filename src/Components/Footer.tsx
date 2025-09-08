@@ -22,24 +22,28 @@ export default function Footer() {
         >
           {/* Logo & Brand Name */}
           <motion.div
-            className="flex items-center gap-3 cursor-pointer mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <Image
-              src="/dgovernorsplaceLogo.png"
-              alt="D'Governor’s Place Logo"
-              width={40}
-              height={40}
-              priority
-              quality={75}
-              className="rounded-full w-9 sm:w-10 md:w-11"
-              sizes="(max-width: 768px) 32px, 36px"
-            />
-            <h1 className="text-lg sm:text-lg md:text-[14px] lg:text-lg font-extrabold tracking-wide bg-gradient-to-r from-[#f3ce00] via-yellow-400 to-[#f3ce00] text-transparent bg-clip-text drop-shadow-lg">
-              D&apos;Governor’s Place
-            </h1>
+            <Link
+              href="/"
+              className="flex items-center gap-3 cursor-pointer mb-4"
+            >
+              <Image
+                src="/dgovernorsplaceLogo.png"
+                alt="D'Governor’s Place Logo"
+                width={40}
+                height={40}
+                priority
+                quality={75}
+                className="rounded-full w-9 sm:w-10 md:w-11"
+                sizes="(max-width: 768px) 32px, 36px"
+              />
+              <h1 className="text-lg sm:text-lg md:text-[14px] lg:text-lg font-extrabold tracking-wide bg-gradient-to-r from-[#f3ce00] via-yellow-400 to-[#f3ce00] text-transparent bg-clip-text drop-shadow-lg">
+                D&apos;Governor’s Place
+              </h1>
+            </Link>
           </motion.div>
 
           <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs">
@@ -63,7 +67,7 @@ export default function Footer() {
               { name: "Home", path: "/" },
               { name: "About Us", path: "/about" },
               { name: "Gallery", path: "/studio" },
-              { name: "Apartments", path: "/apartments" },
+              { name: "Bookings", path: "/bookings" },
               { name: "Contact", path: "/contact" },
             ].map((link, index) => (
               <li key={index}>

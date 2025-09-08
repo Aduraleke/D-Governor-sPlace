@@ -2,13 +2,14 @@
 
 import React, { FC } from "react";
 import { Icon } from "@iconify/react";
-import type { FormState } from "./page"; // <- type-only to avoid runtime circular imports
+import type { FormState } from "./page"; // <- adjust if needed
 
-// shared input style
+// -----------------------------
+// shared styles
+// -----------------------------
 const inputCls =
   "w-full rounded-xl border border-white/10 bg-black/40 px-10 py-3 text-sm text-gray-100 placeholder-gray-500 outline-none focus:border-yellow-400/40 focus:ring focus:ring-yellow-400/30";
 
-// textarea needs extra top padding so the icon doesn't overlap the first line
 const textareaCls = inputCls + " pt-10";
 
 // -----------------------------
@@ -24,7 +25,7 @@ const IconInput: FC<{
   min?: number;
   max?: number;
   required?: boolean;
-  autoComplete?: string; // <-- add this
+  autoComplete?: string;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
 }> = ({
   id,
@@ -61,16 +62,14 @@ const IconInput: FC<{
           min={min}
           max={max}
           required={required}
-          autoComplete={autoComplete} // <-- forward the prop
-          inputMode={inputMode} // <-- forward if passed
+          autoComplete={autoComplete}
+          inputMode={inputMode}
           className={`${inputCls} peer`}
         />
       </div>
     </div>
   );
 };
-
-
 
 const IconSelect: FC<{
   id: string;
@@ -115,7 +114,6 @@ const IconSelect: FC<{
   );
 };
 
-
 const IconTextarea: FC<{
   id: string;
   label: string;
@@ -145,16 +143,11 @@ const IconTextarea: FC<{
 );
 
 // -----------------------------
-// BookingForm
+// StudioBookingForm
 // -----------------------------
-const apartments = [
-  "Studio",
-  "1 Bedroom",
-  "2 Bedrooms",
-  "Larger / Multi Bedroom",
-];
+const sessionTypes = ["Photoshoot", "Video Shoot", "Podcast", "Recording"];
 
-const BookingForm: FC<{
+const StudioBookingForm: FC<{
   state: FormState;
   setField: (field: keyof FormState, value: string | number) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -166,17 +159,12 @@ const BookingForm: FC<{
     onSubmit(e);
   };
 
-  const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    onReset();
-  };
-
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md sm:p-8">
       <div className="mb-6 flex items-center gap-2">
         <span className="h-2 w-2 rounded-full bg-yellow-400" />
         <span className="text-xs font-extrabold uppercase tracking-[3px] text-yellow-400">
-          Apartment Booking
+          Studio Booking
         </span>
       </div>
 
@@ -195,24 +183,37 @@ const BookingForm: FC<{
           required
         />
 
+        <IconInput
+          id="duration"
+          label="Duration (Hours)"
+          icon="mdi:clock-outline"
+          type="number"
+          value={state.duration ?? ""}
+          onChange={(v) => setField("duration", Number(v))}
+          min={1}
+          max={12}
+          inputMode="numeric"
+          required
+        />
+
         <IconSelect
-          id="apartment"
-          label="Apartment Type"
-          icon="mdi:home-city-outline"
-          value={state.apartment}
-          onChange={(v) => setField("apartment", v)}
-          options={apartments}
+          id="sessionType"
+          label="Session Type"
+          icon="mdi:video-outline"
+          value={state.sessionType ?? ""}
+          onChange={(v) => setField("sessionType", v)}
+          options={sessionTypes}
         />
 
         <IconInput
-          id="nights"
-          label="Nights"
-          icon="mdi:moon-waning-crescent"
+          id="participants"
+          label="Participants"
+          icon="mdi:account-group"
           type="number"
-          value={state.nights || ""}
-          onChange={(v) => setField("nights", Number(v))}
+          value={state.participants ?? ""}
+          onChange={(v) => setField("participants", Number(v))}
           min={1}
-          max={60}
+          max={50}
           inputMode="numeric"
         />
 
@@ -280,7 +281,7 @@ const BookingForm: FC<{
 
           <button
             type="button"
-            onClick={handleReset}
+            onClick={onReset}
             className="inline-flex items-center justify-center rounded-full border-2 border-yellow-400 px-6 py-3 text-sm font-semibold text-yellow-400 transition hover:bg-yellow-400 hover:text-black"
           >
             <Icon icon="mdi:restart" className="mr-2 h-5 w-5" /> Reset
@@ -291,4 +292,4 @@ const BookingForm: FC<{
   );
 };
 
-export default BookingForm;
+export default StudioBookingForm;

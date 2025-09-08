@@ -2,9 +2,9 @@
 
 import React, { useReducer, useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
-import BookingForm from "../bookings/BookingForm";
-import BookingPreview from "../bookings/BookingPreview";
-import BookingToasts from "../bookings/BookingToast";
+import BookingForm from "./ApartmentBookingForm";
+import BookingPreview from "./ApartmentBookingPreview";
+import BookingToasts from "./ApartmentBookingToast";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 
@@ -156,6 +156,9 @@ export default function Page() {
           <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
             Explore Our Apartments
           </h2>
+
+
+          
 
           <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {apartments.map((apt) => (
