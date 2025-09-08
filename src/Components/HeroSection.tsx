@@ -40,7 +40,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content Wrapper */}
-      <div className=" relative flex flex-col md:flex-row items-center justify-center text-center md:text-left max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 min-h-screen gap-8 md:gap-12">
+      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 min-h-screen gap-10">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -63,7 +63,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-snug sm:leading-tight drop-shadow-lg mt-3 sm:mt-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-snug sm:leading-tight drop-shadow-lg mt-3 sm:mt-4 text-center md:text-left"
           >
             Welcome to{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 animate-gradient-shimmer">
@@ -118,12 +118,13 @@ export default function HeroSection() {
             </Link>
           </motion.div>
         </motion.div>
+
         {/* Right Content */}
         <motion.div
           initial={reduceMotion ? {} : { opacity: 0, y: 40 }}
           animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full max-w-[280px] sm:max-w-[300px] md:max-w-[420px] mx-auto md:mx-0"
+          className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[420px] mx-auto md:mx-0 flex flex-col justify-between"
         >
           <motion.div
             whileHover={reduceMotion ? {} : { scale: 1.01 }}
@@ -131,7 +132,7 @@ export default function HeroSection() {
             className="rounded-3xl p-[1px] bg-gradient-to-br from-yellow-400/20 via-white/10 to-transparent"
           >
             <div className="rounded-3xl bg-white/5 border border-white/20 shadow-2xl backdrop-blur-xl">
-              <div className="p-6 md:p-8">
+              <div className="p-6 md:p-8 flex flex-col h-full">
                 {/* Header */}
                 <div className="text-center mb-6">
                   <h2 className="text-xl md:text-2xl font-bold text-white">
@@ -157,10 +158,10 @@ export default function HeroSection() {
                           />
                         </div>
                         <div className="min-w-0">
-                          <h3 className="text-sm font-semibold text-white truncate">
+                          <h3 className="text-[12px] font-semibold text-white truncate">
                             {f.title}
                           </h3>
-                          <p className="text-xs text-gray-300 mt-1 line-clamp-2">
+                          <p className="text-[10px] text-gray-300 mt-1 line-clamp-2">
                             {f.description}
                           </p>
                         </div>
@@ -174,7 +175,7 @@ export default function HeroSection() {
                   variants={container}
                   initial="hidden"
                   animate="show"
-                  className="hidden md:flex flex-col gap-4 max-h-[55vh] overflow-y-auto pr-1"
+                  className="hidden md:flex flex-col gap-4 max-h-[45vh] overflow-y-auto pr-1"
                 >
                   {herofeatures.map((feature, idx) => (
                     <motion.li
@@ -205,10 +206,25 @@ export default function HeroSection() {
               </div>
             </div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-6 flex justify-center md:justify-start"
+          >
+            <Link
+              href="/studio"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 text-black font-semibold shadow-lg hover:scale-105 hover:shadow-yellow-400/50 transition-all flex items-center gap-2"
+            >
+              <Icon icon="mdi:camera-outline" className="w-5 h-5" />
+              Visit Our Photo Studio
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Gradient shimmer + responsive grid template */}
+      {/* Gradient shimmer */}
       <style jsx>{`
         @keyframes gradient-shimmer {
           0% {
@@ -224,13 +240,6 @@ export default function HeroSection() {
         .animate-gradient-shimmer {
           background-size: 200% 200%;
           animation: gradient-shimmer 5s ease infinite;
-        }
-
-        @media (min-width: 1024px) {
-          .hero-grid {
-            grid-template-columns: 1fr minmax(0, 420px);
-            align-items: center;
-          }
         }
       `}</style>
     </section>

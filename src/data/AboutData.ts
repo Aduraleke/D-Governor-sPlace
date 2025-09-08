@@ -82,4 +82,5 @@ export const herofeatures = [
     title: "Stay With Us",
     description: "Relax in our luxury short-let apartments.",
   },
+
 ];

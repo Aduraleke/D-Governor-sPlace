@@ -14,6 +14,9 @@ const item: Variants = {
 };
 
 export default function ContactInfo() {
+      const address =
+        "No3. Okereke Close, Off Trans-Woji Road, Peace Valley Estate, Port Harcourt, Rivers State, Nigeria";
+      const mapQuery = encodeURIComponent(address);
   return (
     <div className="space-y-6">
       <motion.span
@@ -98,10 +101,10 @@ export default function ContactInfo() {
         <ContactCard
           icon="mdi:map-marker-outline"
           title="Address"
-          description="123 Rooftop Avenue, Port Harcourt, Nigeria"
+          description="No3. Okereke Close, Off Trans-Woji Road, Peace Valley Estate, Port Harcourt, Rivers State, Nigeria"
           content={
             <Link
-              href="https://www.google.com/maps?q=123+Rooftop+Avenue,+Port+Harcourt,+Nigeria"
+              href={`https://www.google.com/maps?q=${mapQuery}`}
               target="_blank"
               className="inline-flex items-center gap-2 text-sm text-yellow-400 hover:underline"
             >

@@ -14,6 +14,11 @@ const item: Variants = {
 };
 
 export default function MapPreview() {
+    const address =
+      "No3. Okereke Close, Off Trans-Woji Road, Peace Valley Estate, Port Harcourt, Rivers State, Nigeria";
+    const mapQuery = encodeURIComponent(address);
+
+  
   return (
     <motion.div
       variants={item}
@@ -31,7 +36,7 @@ export default function MapPreview() {
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-black/30 via-transparent to-black/20" />
       <div className="absolute bottom-4 right-4">
         <Link
-          href="https://www.google.com/maps?q=123+Rooftop+Avenue,+Port+Harcourt,+Nigeria"
+          href={`https://www.google.com/maps?q=${mapQuery}`}
           target="_blank"
           className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 backdrop-blur-md px-4 py-2 text-sm hover:bg-black/60 transition"
         >
