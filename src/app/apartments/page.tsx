@@ -6,6 +6,7 @@ import BookingForm from "./ApartmentBookingForm";
 import BookingPreview from "./ApartmentBookingPreview";
 import BookingToasts from "./ApartmentBookingToast";
 import { Icon } from "@iconify/react";
+import { COMPOSE_EMAIL } from "@/services/mail.service";
 import Image from "next/image";
 
 // Apartments Data
@@ -113,26 +114,48 @@ export default function Page() {
     return null;
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (submitting) return;
+ async function handleSubmit(e: React.FormEvent) {
+   e.preventDefault();
+   if (submitting) return;
 
-    const err = validate(state);
-    if (err) return setError(err);
+   const err = validate(state);
+   if (err) return setError(err);
 
-    setError(null);
-    setSubmitting(true);
+   setError(null);
+   setSubmitting(true);
 
-    try {
-      await new Promise((r) => setTimeout(r, 800));
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 1500);
-    } catch {
-      setError("Submission failed. Try again.");
-    } finally {
-      setSubmitting(false);
-    }
-  }
+   try {
+     // 📨 Format booking details for the email
+     const emailContent = `
+      📅 Date: ${state.date}
+      🌙 Nights: ${state.nights}
+      🏨 Apartment: ${state.apartment}
+      🙍 Name: ${state.name}
+      ✉️ Email: ${state.email}
+      📞 Phone: ${state.phone}
+      📝 Requests: ${state.requests || "None"}
+    `;
+
+     // 🔥 Send to backend mailer
+     const result = await COMPOSE_EMAIL({
+       to: "bookings@yourstudio.com", // change to your receiving email
+       subject: `New Apartment Booking - ${state.apartment}`,
+       content: emailContent,
+     });
+
+     if (result.isOk) {
+       setSuccess(true);
+       dispatch({ type: "reset" }); // reset form
+       setTimeout(() => setSuccess(false), 3000);
+     } else {
+       setError(result.message);
+     }
+   } catch {
+     setError("Submission failed. Try again.");
+   } finally {
+     setSubmitting(false);
+   }
+ }
 
   return (
     <section

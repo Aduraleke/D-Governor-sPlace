@@ -7,6 +7,7 @@ import StudioBookingForm from "./StudioBookingForm";
 import BookingPreview from "./BookingPreview";
 import BookingToasts from "./BookingToast";
 import { Icon } from "@iconify/react";
+import { COMPOSE_EMAIL } from "@/services/mail.service";
 import StudioPreview from "./StudioPreview";
 
 // ---- Shared Form state ----
@@ -106,26 +107,55 @@ export default function Page() {
     return null;
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (submitting) return;
 
-    const err = validate(activeState);
-    if (err) return setError(err);
 
-    setError(null);
-    setSubmitting(true);
+ async function handleSubmit(e: React.FormEvent) {
+   e.preventDefault();
+   if (submitting) return;
 
-    try {
-      await new Promise((r) => setTimeout(r, 800));
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 1500);
-    } catch {
-      setError("Submission failed. Try again.");
-    } finally {
-      setSubmitting(false);
-    }
-  }
+   const err = validate(activeState);
+   if (err) return setError(err);
+
+   setError(null);
+   setSubmitting(true);
+
+   try {
+     // 📨 build email content
+     const emailContent = `
+      📅 Date: ${activeState.date}
+      🏨 Apartment: ${activeState.apartment ?? "N/A"}
+      🌙 Nights: ${activeState.nights ?? "N/A"}
+      🎬 Session Type: ${activeState.sessionType ?? "N/A"}
+      ⏳ Duration: ${activeState.duration ?? "N/A"} hours
+      👥 Participants: ${activeState.participants ?? "N/A"}
+      🙍 Name: ${activeState.name}
+      ✉️ Email: ${activeState.email}
+      📞 Phone: ${activeState.phone}
+      📝 Requests: ${activeState.requests || "None"}
+    `;
+
+     // 🔥 send via backend mailer
+     const result = await COMPOSE_EMAIL({
+       to: "dgovernorsplace@gmail.com", // replace with your receiver email
+       subject: `New ${tab === "apartments" ? "Apartment" : "Studio"} Booking`,
+       content: emailContent,
+     });
+
+     if (result.isOk) {
+       setSuccess(true);
+       // reset form
+       activeDispatch({ type: "reset" });
+       setTimeout(() => setSuccess(false), 3000);
+     } else {
+       setError(result.message);
+     }
+   } catch {
+     setError("Submission failed. Try again.");
+   } finally {
+     setSubmitting(false);
+   }
+ }
+
 
   return (
     <section

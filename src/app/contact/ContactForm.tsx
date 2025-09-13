@@ -1,8 +1,7 @@
-"use client";
-
-import React, { useState, } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import BookingToasts from "../bookings/BookingToast";
+import { COMPOSE_EMAIL } from "@/services/mail.service";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -13,21 +12,41 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
 
     try {
-      // simulate request
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      const response = await COMPOSE_EMAIL({
+        to: "consult@scaftechservices.com",
+        subject: subject || `Contact Mail from: ${name} - ${email}`,
+        content: `${message}
+        
+        Details:
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone || "N/A"}
+        `,
+      });
 
-      // fake success
-      setStatus("sent");
+      if (response.isOk) {
+        setStatus("sent");
+        e.currentTarget.reset(); // clear form
 
-      // auto-hide toast after 3s
-      setTimeout(() => setStatus("idle"), 3000);
+        setTimeout(() => setStatus("idle"), 3000);
+      } else {
+        setStatus("error");
+        setError(response.message || "Failed to send email.");
+      }
     } catch {
       setStatus("error");
       setError("Something went wrong. Please try again.");
     }
-
   }
 
   return (
@@ -56,6 +75,7 @@ export default function ContactForm() {
           <Textarea label="Message" name="message" rows={5} required />
         </div>
 
+        {/* Honeypot field */}
         <input
           type="text"
           name="website"
