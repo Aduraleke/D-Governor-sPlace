@@ -112,106 +112,63 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Right Content */}
+        {/* Right Content - Redesigned */}
         <motion.div
           initial={reduceMotion ? {} : { opacity: 0, y: 40 }}
           animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[420px] mx-auto md:mx-0 flex flex-col justify-between"
+          className="w-full max-w-[350px] md:max-w-[420px] mx-auto md:mx-0 flex flex-col"
         >
-          <motion.div
-            whileHover={reduceMotion ? {} : { scale: 1.01 }}
-            transition={{ type: "spring", stiffness: 120, damping: 16 }}
-            className="rounded-3xl p-[1px] bg-gradient-to-br from-yellow-400/20 via-white/10 to-transparent"
-          >
-            <div className="rounded-3xl bg-white/5 border border-white/20 shadow-2xl backdrop-blur-xl">
-              <div className="p-6 md:p-8 flex flex-col h-full">
-                {/* Header */}
-                <div className="text-center mb-6">
-                  <h2 className="text-xl md:text-2xl font-bold text-white">
-                    What We <span className="text-yellow-400">Offer</span>
-                  </h2>
-                  <p className="mt-2 text-sm text-gray-400">
-                    A quick glance at our highlights
-                  </p>
+          {/* Features */}
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            {herofeatures.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 180, damping: 15 }}
+                className="group relative rounded-2xl p-5 flex flex-col items-center text-center bg-white/10 border border-white/20 backdrop-blur-lg shadow-lg hover:bg-yellow-400/10 hover:border-yellow-400/40 transition-all"
+              >
+                {/* Icon */}
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400/10 border border-yellow-400/25 mb-3 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                  <Icon
+                    icon={feature.icon}
+                    className="h-6 w-6 text-yellow-400 group-hover:text-black"
+                  />
                 </div>
 
-                {/* Mobile: scrollable cards */}
-                <div className="md:hidden pb-4">
-                  <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-1">
-                    {herofeatures.map((f, i) => (
-                      <div
-                        key={i}
-                        className="snap-center min-w-[80%] sm:min-w-[220px] shrink-0 flex items-start gap-3 rounded-xl p-4 bg-white/10 border border-white/20 shadow-md backdrop-blur-lg"
-                      >
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400/10 border border-yellow-400/25">
-                          <Icon
-                            icon={f.icon}
-                            className="h-5 w-5 text-yellow-400"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <h3 className="text-[12px] font-semibold text-white truncate">
-                            {f.title}
-                          </h3>
-                          <p className="text-[10px] text-gray-300 mt-1 line-clamp-2">
-                            {f.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                {/* Title */}
+                <h3 className="text-sm font-semibold text-white truncate">
+                  {feature.title}
+                </h3>
 
-                {/* Desktop: vertical list with height cap */}
-                <motion.ul
-                  variants={container}
-                  initial="hidden"
-                  animate="show"
-                  className="hidden md:flex flex-col gap-4 md:max-h-[320px] lg:max-h-[360px] xl:max-h-[400px] overflow-y-auto pr-1"
-                >
-                  {herofeatures.map((feature, idx) => (
-                    <motion.li
-                      key={idx}
-                      variants={item}
-                      whileHover={{ scale: 1.02 }}
-                      className="group flex items-start gap-4 rounded-xl border border-white/20 bg-white/10 p-5 shadow-md backdrop-blur-lg transition-all hover:border-yellow-400/40 hover:bg-yellow-400/10"
-                    >
-                      <div className="shrink-0">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400/10 border border-yellow-400/25 group-hover:bg-yellow-400 transition-colors">
-                          <Icon
-                            icon={feature.icon}
-                            className="h-6 w-6 text-yellow-400 group-hover:text-black"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-semibold text-white truncate">
-                          {feature.title}
-                        </h3>
-                        <p className="mt-2 text-sm text-gray-300 line-clamp-3">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
-            </div>
-          </motion.div>
+                {/* Description */}
+                <p className="mt-2 text-xs text-gray-300 line-clamp-3">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
 
+          {/* CTA Button as Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 flex justify-center md:justify-start mb-6"
+            className="mt-8"
           >
             <Link
               href="/studio"
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 text-black font-semibold shadow-lg hover:scale-105 hover:shadow-yellow-400/50 transition-all flex items-center gap-2"
+              className="w-full block rounded-2xl bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 p-[2px] shadow-lg hover:shadow-yellow-400/50 transition-all"
             >
-              <Icon icon="mdi:camera-outline" className="w-5 h-5" />
-              Visit Our Photo Studio
+              <div className="rounded-2xl bg-black text-center px-6 py-4 flex items-center justify-center gap-2">
+                <Icon
+                  icon="mdi:camera-outline"
+                  className="w-5 h-5 text-yellow-400"
+                />
+                <span className="font-semibold text-white">
+                  Visit Our Photo Studio
+                </span>
+              </div>
             </Link>
           </motion.div>
         </motion.div>

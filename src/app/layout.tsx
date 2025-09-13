@@ -32,7 +32,7 @@ export default function RootLayout({
         {/* Wrap everything in a client component */}
         <ClientWrapper>
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main className="">{children}</main>
           <Footer />
         </ClientWrapper>
       </body>
