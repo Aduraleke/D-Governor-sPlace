@@ -163,12 +163,12 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Desktop: vertical list */}
+                {/* Desktop: vertical list with height cap */}
                 <motion.ul
                   variants={container}
                   initial="hidden"
                   animate="show"
-                  className="hidden md:flex flex-col gap-4 max-h-[45vh] overflow-y-auto pr-1"
+                  className="hidden md:flex flex-col gap-4 md:max-h-[320px] lg:max-h-[360px] xl:max-h-[400px] overflow-y-auto pr-1"
                 >
                   {herofeatures.map((feature, idx) => (
                     <motion.li
