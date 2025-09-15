@@ -21,9 +21,9 @@ export default function ContactInfo() {
     <div className="space-y-6">
       <motion.span
         variants={item}
-        className="inline-flex items-center gap-2 uppercase tracking-[3px] text-yellow-400 text-sm sm:text-base md:text-lg lg:text-xl font-extrabold"
+        className="inline-flex items-center gap-2 uppercase tracking-[3px] text-[#f3ce00] text-sm sm:text-base md:text-lg lg:text-xl font-extrabold"
       >
-        <span className="inline-block h-2 w-2 rounded-full bg-yellow-400" />
+        <span className="inline-block h-2 w-2 rounded-full bg-[#f3ce00]" />
         Contact D&apos;Governor&apos;s Place
       </motion.span>
 
@@ -54,7 +54,7 @@ export default function ContactInfo() {
             <>
               <a
                 href="tel:+2340000000000"
-                className="text-yellow-400 hover:underline text-sm break-all"
+                className="text-[#f3ce00] hover:underline text-sm break-all"
               >
                 +234 802 639 3322
               </a>
@@ -74,7 +74,7 @@ export default function ContactInfo() {
             <Link
               href="https://wa.me/2348026393322"
               target="_blank"
-              className="inline-flex items-center gap-2 text-sm text-yellow-400 hover:underline"
+              className="inline-flex items-center gap-2 text-sm text-[#f3ce00] hover:underline"
             >
               Start a chat{" "}
               <Icon icon="mdi:arrow-top-right" className="w-4 h-4" />
@@ -90,7 +90,7 @@ export default function ContactInfo() {
           content={
             <a
               href="mailto:info@dgovernorsplace.com"
-              className="text-yellow-400 hover:underline text-sm break-words max-w-full block"
+              className="text-[#f3ce00] hover:underline text-sm break-words max-w-full block"
             >
               dgovernorsplace@gmail.com
             </a>
@@ -106,7 +106,7 @@ export default function ContactInfo() {
             <Link
               href={`https://www.google.com/maps?q=${mapQuery}`}
               target="_blank"
-              className="inline-flex items-center gap-2 text-sm text-yellow-400 hover:underline"
+              className="inline-flex items-center gap-2 text-sm text-[#f3ce00] hover:underline"
             >
               Get directions{" "}
               <Icon icon="mdi:arrow-top-right" className="w-4 h-4" />
@@ -129,11 +129,11 @@ const ContactCard = ({
   description: string;
   content: React.ReactNode;
 }) => (
-  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg p-6 transition-all duration-300 hover:scale-[1.03] hover:shadow-yellow-400/30 group">
+  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg p-6 transition-all duration-300 hover:scale-[1.03] hover:shadow-[#f3ce00]/30 group">
     <div className="flex items-center gap-3">
       <Icon
         icon={icon}
-        className="w-7 h-7 text-yellow-400 transition-transform duration-300 group-hover:scale-110"
+        className="w-7 h-7 text-[#f3ce00] transition-transform duration-300 group-hover:scale-110"
       />
       <h3 className="font-semibold text-base sm:text-lg text-white">{title}</h3>
     </div>

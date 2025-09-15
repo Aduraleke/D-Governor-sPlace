@@ -176,7 +176,7 @@ export default function Page() {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-[#f3ce00] to-yellow-200 bg-clip-text text-transparent">
             Explore Our Apartments
           </h2>
 
@@ -212,7 +212,7 @@ export default function Page() {
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-5 right-5 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md"
+                    className="absolute top-5 right-5 bg-[#f3ce00] text-black text-xs font-bold px-3 py-1 rounded-full shadow-md"
                   >
                     Selected
                   </motion.div>
@@ -251,7 +251,7 @@ export default function Page() {
           <div className="w-full max-w-3xl backdrop-blur-md rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-xl">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
               <div className="flex items-center gap-3 text-center sm:text-left">
-                <Icon icon="mdi:lifebuoy" className="h-7 w-7 text-yellow-400" />
+                <Icon icon="mdi:lifebuoy" className="h-7 w-7 text-[#f3ce00]" />
                 <p className="text-sm sm:text-base text-gray-200">
                   Need help? Our concierge team is available 24/7.
                 </p>
@@ -259,7 +259,7 @@ export default function Page() {
 
               <a
                 href="tel:+2348026393322"
-                className="inline-flex items-center justify-center rounded-full border border-yellow-400 px-6 py-2 text-sm sm:text-base font-semibold text-yellow-400 hover:bg-yellow-400 hover:text-black transition hover:scale-105"
+                className="inline-flex items-center justify-center rounded-full border border-[#f3ce00] px-6 py-2 text-sm sm:text-base font-semibold text-[#f3ce00] hover:bg-[#f3ce00] hover:text-black transition hover:scale-105"
               >
                 <Icon icon="mdi:phone" className="mr-2 h-5 w-5" />
                 Call Us

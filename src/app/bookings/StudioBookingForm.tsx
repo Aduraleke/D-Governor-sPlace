@@ -8,7 +8,7 @@ import type { FormState } from "./page"; // <- adjust if needed
 // shared styles
 // -----------------------------
 const inputCls =
-  "w-full rounded-xl border border-white/10 bg-black/40 px-10 py-3 text-sm text-gray-100 placeholder-gray-500 outline-none focus:border-yellow-400/40 focus:ring focus:ring-yellow-400/30";
+  "w-full rounded-xl border border-white/10 bg-black/40 px-10 py-3 text-sm text-gray-100 placeholder-gray-500 outline-none focus:border-[#f3ce00]/40 focus:ring focus:ring-[#f3ce00]/30";
 
 const textareaCls = inputCls + " pt-10";
 
@@ -50,7 +50,7 @@ const IconInput: FC<{
       <div className="relative">
         <Icon
           icon={icon}
-          className={`absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 transition-opacity pointer-events-none
+          className={`absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 tex[#f3ce00] transition-opacity pointer-events-none
             peer-focus:opacity-0 ${hasValue ? "opacity-0" : "opacity-100"}`}
         />
         <input
@@ -89,7 +89,7 @@ const IconSelect: FC<{
       <div className="relative">
         <Icon
           icon={icon}
-          className={`absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 transition-opacity pointer-events-none ${
+          className={`absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 tex[#f3ce00] transition-opacity pointer-events-none ${
             hasValue ? "opacity-0" : "opacity-100"
           }`}
         />
@@ -128,7 +128,7 @@ const IconTextarea: FC<{
     <div className="relative">
       <Icon
         icon={icon}
-        className="absolute left-3 top-3 h-5 w-5 text-gray-400"
+        className="absolute left-3 top-3 h-5 w-5 tex[#f3ce00]"
       />
       <textarea
         id={id}
@@ -162,8 +162,8 @@ const StudioBookingForm: FC<{
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md sm:p-8">
       <div className="mb-6 flex items-center gap-2">
-        <span className="h-2 w-2 rounded-full bg-yellow-400" />
-        <span className="text-xs font-extrabold uppercase tracking-[3px] text-yellow-400">
+        <span className="h-2 w-2 rounded-full bg-[#f3ce00]" />
+        <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#f3ce00]">
           Studio Booking
         </span>
       </div>
@@ -245,7 +245,7 @@ const StudioBookingForm: FC<{
           <div className="relative">
             <Icon
               icon="mdi:phone"
-              className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 tex[#f3ce00]"
             />
             <input
               id="phone"
@@ -273,7 +273,7 @@ const StudioBookingForm: FC<{
           <button
             disabled={submitting}
             type="submit"
-            className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-black shadow-lg hover:scale-105 transition disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-full bg-[#f3ce00] px-6 py-3 text-sm font-semibold text-black shadow-lg hover:scale-105 transition disabled:opacity-60"
           >
             <Icon icon="mdi:send" className="mr-2 h-5 w-5" />
             {submitting ? "Sending..." : "Confirm Booking"}
@@ -282,7 +282,7 @@ const StudioBookingForm: FC<{
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex items-center justify-center rounded-full border-2 border-yellow-400 px-6 py-3 text-sm font-semibold text-yellow-400 transition hover:bg-yellow-400 hover:text-black"
+            className="inline-flex items-center justify-center rounded-full border-2 border-[#f3ce00] px-6 py-3 text-sm font-semibold text-[#f3ce00] transition hover:bg-[#f3ce00] hover:text-black"
           >
             <Icon icon="mdi:restart" className="mr-2 h-5 w-5" /> Reset
           </button>

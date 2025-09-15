@@ -25,8 +25,6 @@ const item: Variants = {
   },
 };
 
-
-
 export default function AboutSection() {
   const [featureIndex, setFeatureIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
@@ -53,7 +51,7 @@ export default function AboutSection() {
   const feature = features[featureIndex];
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-black via-black/95 to-black text-white min-h-screen ">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-black via-black/95 to-black text-white min-h-screen">
       {/* Decorative glowing blobs */}
       <div
         aria-hidden
@@ -70,11 +68,16 @@ export default function AboutSection() {
           initial={initialState}
           whileInView={whileInViewState}
           viewport={{ amount: 0.3, once: true }}
-          className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-14 lg:gap-32 items-center"
+          className="
+            grid grid-cols-1 
+            lg:grid-cols-2 
+            gap-14 lg:gap-24 items-center
+            max-[1252px]:grid-cols-1
+          "
         >
           {/* LEFT: Images */}
           <motion.div variants={item} className="relative">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl ">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <Image
                 src={feature.slides[slideIndex]}
                 alt={feature.title}
@@ -86,7 +89,7 @@ export default function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-black/30" />
             </div>
 
-            {/* Floating Card (next slide) */}
+            {/* Floating Card (next slide preview) */}
             <motion.div
               initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -96,7 +99,7 @@ export default function AboutSection() {
                 delay: 0.3,
               }}
               viewport={{ once: true }}
-              className="hidden sm:block absolute -bottom-8 -right-4 md:-right-10 w-[60%] sm:w-[35%] mr-2 rounded-2xl overflow-hidden border border-white/20 shadow-lg backdrop-blur-md"
+              className="hidden sm:block absolute -bottom-8 -right-4 md:-right-10 w-[60%] sm:w-[35%] mr-2 rounded-2xl overflow-hidden border border-white/20 shadow-lg backdrop-blur-md bg-white/5"
             >
               <div className="relative w-full aspect-[5/3]">
                 <Image
@@ -109,7 +112,7 @@ export default function AboutSection() {
                 <div className="absolute inset-0 bg-black/20" />
               </div>
               <div className="flex items-center gap-3 p-3 sm:p-4 bg-white/10 backdrop-blur-sm">
-                <Icon icon={feature.icon} className="w-6 h-6 text-yellow-400" />
+                <Icon icon={feature.icon} className="w-6 h-6 text-[#f3ce00]" />
                 <p className="text-[12px] text-gray-100">
                   Experience more of {feature.title}
                 </p>
@@ -118,26 +121,38 @@ export default function AboutSection() {
           </motion.div>
 
           {/* RIGHT: Details */}
-          <div>
+          <div className="relative">
+            {/* Section label */}
             <motion.span
               variants={item}
-              className="inline-flex items-center gap-2 uppercase tracking-[3px] text-yellow-400 
-             text-sm sm:text-base md:text-lg lg:text-xl font-extrabold"
+              className="inline-flex items-center gap-2 uppercase tracking-[3px] 
+              text-[#f3ce00] text-sm sm:text-base md:text-lg font-extrabold"
             >
-              <span className="inline-block h-2 w-2 sm:h-2.5 sm:w-2.5 md:h-3 md:w-3 rounded-full bg-yellow-400" />
+              <span className="inline-block h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#f3ce00] animate-pulse" />
               About D&apos;Governor&apos;s Place
             </motion.span>
 
+            {/* Title */}
             <motion.h2
               variants={item}
-              className="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight"
+              className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight"
             >
               {feature.title}
             </motion.h2>
 
+            {/* Tagline with underline accent */}
             <motion.p
               variants={item}
-              className="mt-4 text-gray-300 text-sm sm:text-base md:text-[15px] leading-relaxed max-w-xl"
+              className="mt-3 text-[#f3ce00] text-base sm:text-lg md:text-xl italic font-medium relative inline-block"
+            >
+              {feature.tagline}
+              <span className="block w-12 h-1 mt-1 bg-gradient-to-r from-[#f3ce00] to-transparent rounded-full" />
+            </motion.p>
+
+            {/* Description */}
+            <motion.p
+              variants={item}
+              className="mt-5 text-gray-300 text-sm sm:text-base md:text-[15px] leading-relaxed max-w-xl"
             >
               {feature.desc}
             </motion.p>
@@ -145,19 +160,23 @@ export default function AboutSection() {
             {/* Feature Details */}
             <motion.ul
               variants={item}
-              className="mt-6 space-y-3"
+              className="mt-6 space-y-4"
               aria-label="Feature highlights"
             >
               {feature.details.map((detail, idx) => (
                 <li
                   key={idx}
-                  className="flex items-start gap-3 group hover:translate-x-1 transition-transform duration-300"
+                  className="flex items-start gap-3 group hover:translate-x-2 hover:scale-[1.01] transition-all duration-300"
                 >
-                  <Icon
-                    icon="mdi:check-decagram"
-                    className="w-5 h-5 text-yellow-400 mt-0.5"
-                  />
-                  <p className="text-sm sm:text-base text-gray-300">{detail}</p>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#f3ce00]/10 flex items-center justify-center group-hover:bg-[#f3ce00]/20 transition-colors">
+                    <Icon
+                      icon={detail.icon}
+                      className="w-5 h-5 text-[#f3ce00] group-hover:scale-110 transition-transform"
+                    />
+                  </span>
+                  <p className="text-sm sm:text-base text-gray-300">
+                    {detail.text}
+                  </p>
                 </li>
               ))}
             </motion.ul>
@@ -165,38 +184,53 @@ export default function AboutSection() {
             {/* Stats */}
             <motion.div
               variants={item}
-              className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full"
+              className="mt-10 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6"
             >
               {stats.map((stat, idx) => (
-                <div
+                <motion.div
                   key={idx}
-                  className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 text-center hover:scale-105 hover:bg-white/10 transition-all duration-300 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl border border-white/10 bg-gradient-to-tr from-white/5 to-white/0 
+      backdrop-blur-lg p-6 text-center shadow-lg hover:shadow-[#f3ce00]/20 
+      hover:scale-105 transition-all duration-300 flex flex-col items-center"
                 >
-                  <p className="text-xl sm:text-2xl md:text-2xl font-extrabold text-yellow-400">
+                  <Icon
+                    icon={stat.icon}
+                    className="w-7 h-7 text-[#f3ce00] mb-3"
+                  />
+                  <p className="text-2xl sm:text-3xl font-extrabold text-[#f3ce00]">
                     {stat.value}
                   </p>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-300">
+                  <p className="text-xs sm:text-sm md:text-base text-gray-300 mt-1">
                     {stat.label}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
-
             {/* CTAs */}
             <motion.div
               variants={item}
-              className="mt-7 flex flex-col sm:flex-row gap-4"
+              className="mt-10 flex flex-row justify-center xl:justify-start gap-4"
             >
               <Link
                 href="/bookings"
-                className="px-6 py-3 rounded-full bg-yellow-400 text-black text-sm sm:text-base font-semibold shadow-lg hover:shadow-yellow-500/40 hover:scale-105 transition-transform duration-300 text-center"
+                className="flex items-center justify-center gap-2 px-7 py-3 min-h-[38px] rounded-full 
+    bg-[#f3ce00] text-black text-sm lg:text-[12px] sm:text-base font-semibold shadow-lg 
+    hover:shadow-yellow-500/40 hover:scale-105 transition-transform duration-300"
               >
+                <Icon icon="mdi:calendar-clock" className="w-5 h-5" />
                 Book a Table
               </Link>
               <Link
                 href="/apartments"
-                className="px-6 py-3 rounded-full bg-transparent border-2 border-yellow-400 text-yellow-400 text-sm sm:text-base font-semibold hover:bg-yellow-400 hover:text-black hover:scale-105 transition-transform duration-300 text-center"
+                className="flex items-center justify-center gap-2 px-7 py-3 min-h-[38px] rounded-full 
+    bg-transparent border-2 border-[#f3ce00] text-[#f3ce00] text-sm lg:text-[12px] sm:text-base font-semibold 
+    hover:bg-[#f3ce00] hover:text-black hover:scale-105 transition-transform duration-300"
               >
+                <Icon icon="mdi:door-open" className="w-5 h-5" />
                 View Apartments
               </Link>
             </motion.div>

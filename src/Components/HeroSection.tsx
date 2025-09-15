@@ -40,7 +40,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="uppercase tracking-[3px] text-yellow-400 text-[10px] sm:text-xs md:text-sm font-semibold mt-30 md:mt-0"
+            className="uppercase tracking-[3px] text-[#f3ce00] text-[10px] sm:text-xs md:text-sm font-semibold mt-30 md:mt-0"
           >
             Luxury • Music • Lifestyle • Port Harcourt
           </motion.span>
@@ -53,7 +53,7 @@ export default function HeroSection() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight sm:leading-[1.1] md:leading-[1.05] drop-shadow-lg mt-3 sm:mt-4 text-center md:text-left"
           >
             Welcome to{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 animate-gradient-shimmer">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-[#f3ce00] to-yellow-300 animate-gradient-shimmer">
               D&apos;Governor&apos;s Place
             </span>
           </motion.h1>
@@ -66,17 +66,17 @@ export default function HeroSection() {
             className="mt-4 font-medium text-gray-200 text-base leading-relaxed md:text-left max-w-md text-justify"
           >
             Discover the ultimate spot for premium{" "}
-            <span className="text-yellow-400 font-semibold">
+            <span className="text-[#f3ce00] font-semibold">
               live entertainment,
             </span>{" "}
-            <span className="text-yellow-400 font-semibold">
+            <span className="text-[#f3ce00] font-semibold">
               exciting online karaoke,
             </span>{" "}
-            <span className="text-yellow-400 font-semibold">
+            <span className="text-[#f3ce00] font-semibold">
               mouth-watering small chops & cocktails,
             </span>{" "}
             and{" "}
-            <span className="text-yellow-400 font-semibold">
+            <span className="text-[#f3ce00] font-semibold">
               premium short-let apartments
             </span>{" "}
             all in one place.
@@ -91,7 +91,7 @@ export default function HeroSection() {
           >
             <Link
               href="/bookings"
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 text-black font-semibold shadow-lg hover:scale-105 hover:shadow-yellow-400/50 transition-all flex items-center gap-2"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-yellow-300 via-[#f3ce00] to-amber-500 text-black font-semibold shadow-lg hover:scale-105 hover:shadow-[#f3ce00]/50 transition-all flex items-center gap-2"
             >
               <Icon icon="mdi:calendar-star" className="w-5 h-5" />
               Reserve Now
@@ -113,13 +113,13 @@ export default function HeroSection() {
                 key={idx}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 180, damping: 15 }}
-                className="group relative rounded-2xl p-5 flex flex-col items-center text-center bg-white/10 border border-white/20 backdrop-blur-lg shadow-lg hover:bg-yellow-400/10 hover:border-yellow-400/40 transition-all"
+                className="group relative rounded-2xl p-5 flex flex-col items-center text-center bg-white/10 border border-white/20 backdrop-blur-lg shadow-lg hover:bg-[#f3ce00]/10 hover:border-[#f3ce00]/40 transition-all"
               >
                 {/* Icon */}
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400/10 border border-yellow-400/25 mb-3 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f3ce00]/10 border border-[#f3ce00]/25 mb-3 group-hover:bg-[#f3ce00] group-hover:text-black transition-colors">
                   <Icon
                     icon={feature.icon}
-                    className="h-6 w-6 text-yellow-400 group-hover:text-black"
+                    className="h-6 w-6 text-[#f3ce00] group-hover:text-black"
                   />
                 </div>
 
@@ -145,12 +145,12 @@ export default function HeroSection() {
           >
             <Link
               href="/studio"
-              className="w-full block rounded-2xl bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 p-[2px] shadow-lg hover:shadow-yellow-400/50 transition-all"
+              className="w-full block rounded-2xl bg-gradient-to-r from-yellow-300 via-[#f3ce00] to-amber-500 p-[2px] shadow-lg hover:shadow-[#f3ce00]/50 transition-all"
             >
               <div className="rounded-2xl bg-black text-center px-6 py-4 flex items-center justify-center gap-2">
                 <Icon
                   icon="mdi:camera-outline"
-                  className="w-5 h-5 text-yellow-400"
+                  className="w-5 h-5 text-[#f3ce00]"
                 />
                 <span className="font-semibold text-white">
                   Visit Our Photo Studio

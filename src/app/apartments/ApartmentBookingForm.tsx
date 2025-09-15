@@ -6,7 +6,7 @@ import type { FormState } from "./page"; // <- type-only to avoid runtime circul
 
 // shared input style
 const inputCls =
-  "w-full rounded-xl border border-white/10 bg-black/40 px-10 py-3 text-sm text-gray-100 placeholder-gray-500 outline-none focus:border-yellow-400/40 focus:ring focus:ring-yellow-400/30";
+  "w-full rounded-xl border border-white/10 bg-black/40 px-10 py-3 text-sm text-gray-100 placeholder-gray-500 outline-none focus:border-[#f3ce00]/40 focus:ring focus:ring-[#f3ce00]/30";
 
 // textarea needs extra top padding so the icon doesn't overlap the first line
 const textareaCls = inputCls + " pt-10";
@@ -174,8 +174,8 @@ const BookingForm: FC<{
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md sm:p-8">
       <div className="mb-6 flex items-center gap-2">
-        <span className="h-2 w-2 rounded-full bg-yellow-400" />
-        <span className="text-xs font-extrabold uppercase tracking-[3px] text-yellow-400">
+        <span className="h-2 w-2 rounded-full bg-[#f3ce00]" />
+        <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#f3ce00]">
           Apartment Booking
         </span>
       </div>
@@ -272,7 +272,7 @@ const BookingForm: FC<{
           <button
             disabled={submitting}
             type="submit"
-            className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-black shadow-lg hover:scale-105 transition disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-full bg-[#f3ce00] px-6 py-3 text-sm font-semibold text-black shadow-lg hover:scale-105 transition disabled:opacity-60"
           >
             <Icon icon="mdi:send" className="mr-2 h-5 w-5" />
             {submitting ? "Sending..." : "Confirm Booking"}
@@ -281,7 +281,7 @@ const BookingForm: FC<{
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center justify-center rounded-full border-2 border-yellow-400 px-6 py-3 text-sm font-semibold text-yellow-400 transition hover:bg-yellow-400 hover:text-black"
+            className="inline-flex items-center justify-center rounded-full border-2 border-[#f3ce00] px-6 py-3 text-sm font-semibold text-[#f3ce00] transition hover:bg-[#f3ce00] hover:text-black"
           >
             <Icon icon="mdi:restart" className="mr-2 h-5 w-5" /> Reset
           </button>

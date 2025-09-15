@@ -156,11 +156,11 @@ export default function Page() {
       {/* Blobs */}
       <div
         aria-hidden
-        className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-yellow-500/10 blur-3xl"
+        className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-[#f3ce00]/10 blur-3xl"
       />
       <div
         aria-hidden
-        className="absolute bottom-0 -right-24 h-80 w-80 rounded-full bg-yellow-500/10 blur-3xl"
+        className="absolute bottom-0 -right-24 h-80 w-80 rounded-full bg-[#f3ce00]/10 blur-3xl"
       />
 
       <BookingToasts
@@ -177,7 +177,7 @@ export default function Page() {
           transition={{ duration: 0.7 }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-yellow-400">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#f3ce00]">
             Book Your Experience
           </h2>
           <p className="mt-3 text-gray-300 max-w-2xl mx-auto">
@@ -193,8 +193,8 @@ export default function Page() {
             onClick={() => setTab("apartments")}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full border text-sm sm:text-base transition-all ${
               tab === "apartments"
-                ? "bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105"
-                : "border-white/20 text-gray-300 hover:text-white hover:border-yellow-400"
+                ? "bg-[#f3ce00] text-black border-[#f3ce00] shadow-lg scale-105"
+                : "border-white/20 text-gray-300 hover:text-white hover:border-[#f3ce00]"
             }`}
           >
             <Icon icon="mdi:home-city" className="h-5 w-5" />
@@ -204,8 +204,8 @@ export default function Page() {
             onClick={() => setTab("studio")}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full border text-sm sm:text-base transition-all ${
               tab === "studio"
-                ? "bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105"
-                : "border-white/20 text-gray-300 hover:text-white hover:border-yellow-400"
+                ? "bg-[#f3ce00] text-black border-[#f3ce00] shadow-lg scale-105"
+                : "border-white/20 text-gray-300 hover:text-white hover:border-[#f3ce00]"
             }`}
           >
             <Icon icon="mdi:camera-enhance" className="h-5 w-5" />
@@ -256,7 +256,7 @@ export default function Page() {
         {/* Notes */}
         <p className="mt-10 text-center text-xs text-gray-400">
           * Cancellations must be made at least{" "}
-          <span className="text-yellow-400">24 hours</span> in advance.
+          <span className="text-[#f3ce00]">24 hours</span> in advance.
         </p>
 
         {/* Assistance Card */}
@@ -273,7 +273,7 @@ export default function Page() {
                 <div className="flex justify-center sm:justify-start mb-2 sm:mb-0">
                   <Icon
                     icon="mdi:lifebuoy"
-                    className="h-7 w-7 text-yellow-400"
+                    className="h-7 w-7 text-[#f3ce00]"
                   />
                 </div>
                 <p className="text-sm sm:text-base text-gray-200 max-w-xs sm:max-w-none">
@@ -282,7 +282,7 @@ export default function Page() {
               </div>
               <a
                 href="tel:+2348026393322"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-yellow-400 px-5 py-2 text-sm sm:text-base font-semibold text-yellow-400 hover:bg-yellow-400 hover:text-black transition hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-[#f3ce00] px-5 py-2 text-sm sm:text-base font-semibold text-[#f3ce00] hover:bg-[#f3ce00] hover:text-black transition hover:scale-105"
               >
                 <Icon icon="mdi:phone" className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
                 Call us

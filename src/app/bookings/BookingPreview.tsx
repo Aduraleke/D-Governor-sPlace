@@ -73,7 +73,7 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
 
         {/* Badge */}
         <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-gray-200">
-          <Icon icon="mdi:sparkles" className="h-4 w-4 text-yellow-400" />
+          <Icon icon="mdi:sparkles" className="h-4 w-4 text-[#f3ce00]" />
           Live Preview
         </div>
 
@@ -81,14 +81,14 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
         <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-white/10 bg-black/50 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs uppercase tracking-widest text-yellow-400">
+              <p className="text-xs uppercase tracking-widest text-[#f3ce00]">
                 Apartment
               </p>
               <p className="mt-1 text-sm text-gray-100">{summary}</p>
             </div>
             <Icon
               icon="mdi:bookmark-check-outline"
-              className="h-6 w-6 text-yellow-400"
+              className="h-6 w-6 text-[#f3ce00]"
             />
           </div>
         </div>
@@ -102,7 +102,7 @@ const BookingPreview: FC<{ summary: string }> = ({ summary }) => {
             className="rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition"
           >
             <div className="flex items-start gap-3">
-              <Icon icon={f.icon} className="h-6 w-6 text-yellow-400" />
+              <Icon icon={f.icon} className="h-6 w-6 text-[#f3ce00]" />
               <div>
                 <p className="text-sm font-semibold text-gray-100">{f.title}</p>
                 <p className="mt-1 text-xs text-gray-300">{f.desc}</p>

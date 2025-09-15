@@ -116,7 +116,7 @@ const PhotoStudio: React.FC<PhotoStudioProps> = ({
     <section className="relative w-full bg-black py-12 px-3 overflow-hidden sm:px-5 md:px-12">
       {/* Ambient gradient highlights */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] rounded-full bg-yellow-400/10 blur-3xl top-[-100px] left-[-100px]" />
+        <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] rounded-full bg-[#f3ce00]/10 blur-3xl top-[-100px] left-[-100px]" />
         <div className="absolute w-[220px] sm:w-[300px] h-[220px] sm:h-[300px] rounded-full bg-yellow-500/5 blur-3xl bottom-[-80px] right-[-120px]" />
       </div>
 
@@ -128,10 +128,10 @@ const PhotoStudio: React.FC<PhotoStudioProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="uppercase tracking-[4px] sm:tracking-[6px] text-yellow-400 text-xs sm:text-sm font-semibold">
+          <span className="uppercase tracking-[4px] sm:tracking-[6px] text-[#f3ce00] text-xs sm:text-sm font-semibold">
             Our Creative Space
           </span>
-          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 animate-gradient-shimmer">
+          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-[#f3ce00] to-yellow-600 animate-gradient-shimmer">
             Capturing Timeless Elegance
           </h2>
           <p className="mt-4 text-gray-300 text-xs sm:text-sm md:text-lg max-w-xl sm:max-w-2xl mx-auto leading-relaxed">
@@ -228,7 +228,7 @@ const PhotoStudio: React.FC<PhotoStudioProps> = ({
               >
                 <Icon
                   icon="mdi:close"
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#f3ce00]"
                 />
               </button>
 
@@ -240,7 +240,7 @@ const PhotoStudio: React.FC<PhotoStudioProps> = ({
               >
                 <Icon
                   icon="mdi:chevron-left"
-                  className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-400"
+                  className="w-5 h-5 sm:w-7 sm:h-7 text-[#f3ce00]"
                 />
               </button>
 
@@ -252,7 +252,7 @@ const PhotoStudio: React.FC<PhotoStudioProps> = ({
               >
                 <Icon
                   icon="mdi:chevron-right"
-                  className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-400"
+                  className="w-5 h-5 sm:w-7 sm:h-7 text-[#f3ce00]"
                 />
               </button>
 

@@ -88,14 +88,14 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="px-6 py-3 rounded-full bg-yellow-400 text-black text-sm sm:text-base font-semibold shadow-lg hover:shadow-yellow-500/40 hover:scale-[1.02] transition-transform disabled:opacity-60"
+            className="px-6 py-3 rounded-full bg-[#f3ce00] text-black text-sm sm:text-base font-semibold shadow-lg hover:shadow-yellow-500/40 hover:scale-[1.02] transition-transform disabled:opacity-60"
           >
             {status === "sending" ? "Sending…" : "Send Message"}
           </button>
 
           <Link
             href="tel:+2340000000000"
-            className="px-6 py-3 rounded-full bg-transparent border-2 border-yellow-400 text-yellow-400 text-sm sm:text-base font-semibold hover:bg-yellow-400 hover:text-black hover:scale-[1.02] transition-transform text-center"
+            className="px-6 py-3 rounded-full bg-transparent border-2 border-[#f3ce00] text-[#f3ce00] text-sm sm:text-base font-semibold hover:bg-[#f3ce00] hover:text-black hover:scale-[1.02] transition-transform text-center"
           >
             Call Front Desk
           </Link>
@@ -113,7 +113,7 @@ const Input = ({
     <label className="block text-sm text-gray-300 mb-2">{label}</label>
     <input
       {...props}
-      className="w-full rounded-xl bg-transparent border border-white/15 px-4 py-3 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-yellow-400/70 focus:border-yellow-400/70"
+      className="w-full rounded-xl bg-transparent border border-white/15 px-4 py-3 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#f3ce00]/70 focus:border-[#f3ce00]/70"
     />
   </div>
 );
@@ -126,7 +126,7 @@ const Textarea = ({
     <label className="block text-sm text-gray-300 mb-2">{label}</label>
     <textarea
       {...props}
-      className="w-full rounded-xl bg-transparent border border-white/15 px-4 py-3 text-sm outline-none resize-y placeholder:text-gray-500 focus:ring-2 focus:ring-yellow-400/70 focus:border-yellow-400/70"
+      className="w-full rounded-xl bg-transparent border border-white/15 px-4 py-3 text-sm outline-none resize-y placeholder:text-gray-500 focus:ring-2 focus:ring-[#f3ce00]/70 focus:border-[#f3ce00]/70"
     />
   </div>
 );

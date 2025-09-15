@@ -26,7 +26,7 @@ const BookingToasts: FC<BookingToastsProps> = ({
           exit={{ opacity: 0, y: -10 }}
           className="flex items-center gap-3 rounded-2xl border border-yellow-400/40 bg-black/70 px-4 py-3 shadow-xl"
         >
-          <Icon icon="ph:check-circle" className="h-6 w-6 text-yellow-400" />
+          <Icon icon="ph:check-circle" className="h-6 w-6 text-[#f3ce00]" />
           <p className="text-sm text-yellow-100">{successMessage}</p>
         </motion.div>
       )}

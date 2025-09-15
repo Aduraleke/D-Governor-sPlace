@@ -40,13 +40,13 @@ export default function Footer() {
                 className="rounded-full w-9 sm:w-10 md:w-11"
                 sizes="(max-width: 768px) 32px, 36px"
               />
-              <h1 className="text-lg sm:text-lg md:text-[14px] lg:text-lg font-extrabold tracking-wide bg-gradient-to-r from-[#f3ce00] via-yellow-400 to-[#f3ce00] text-transparent bg-clip-text drop-shadow-lg">
+              <h1 className="text-lg sm:text-lg md:text-[14px] lg:text-lg font-extrabold tracking-wide bg-gradient-to-r from-[#f3ce00] via-[#f3ce00] to-[#f3ce00] text-transparent bg-clip-text drop-shadow-lg">
                 D&apos;Governor’s Place
               </h1>
             </Link>
           </motion.div>
 
-          <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs">
+          <p className="tex[#f3ce00] text-xs sm:text-sm leading-relaxed max-w-xs">
             Your all-in-one destination for music entertainment live-online
             karaoke delicious small chops & drinks premium short-let apartments
           </p>
@@ -73,7 +73,7 @@ export default function Footer() {
               <li key={index}>
                 <Link
                   href={link.path}
-                  className="hover:text-yellow-400 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded"
+                  className="hover:text-[#f3ce00] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#f3ce00] rounded"
                 >
                   {link.name}
                 </Link>
@@ -98,7 +98,7 @@ export default function Footer() {
             <li className="flex items-start gap-3">
               <Icon
                 icon="mdi:map-marker"
-                className="text-yellow-400 text-xl flex-shrink-0"
+                className="text-[#f3ce00] text-xl flex-shrink-0"
               />
               <span className="leading-relaxed">
                 No3. Okereke Close, Off Trans-Woji Road, Peace Valley Estate,
@@ -108,10 +108,10 @@ export default function Footer() {
 
             {/* Phone Number */}
             <li className="flex items-center gap-3">
-              <Icon icon="mdi:phone" className="text-yellow-400 text-xl" />
+              <Icon icon="mdi:phone" className="text-[#f3ce00] text-xl" />
               <a
                 href="tel:+2348026393322"
-                className="hover:text-yellow-400 transition-colors duration-300"
+                className="hover:text-[#f3ce00] transition-colors duration-300"
               >
                 +234 802 639 3322
               </a>
@@ -119,10 +119,10 @@ export default function Footer() {
 
             {/* Email */}
             <li className="flex items-center gap-3">
-              <Icon icon="mdi:email" className="text-yellow-400 text-xl" />
+              <Icon icon="mdi:email" className="text-[#f3ce00] text-xl" />
               <a
                 href="mailto:dgovernorsplace@gmail.com"
-                className="hover:text-yellow-400 transition-colors duration-300"
+                className="hover:text-[#f3ce00] transition-colors duration-300"
               >
                 dgovernorsplace@gmail.com
               </a>
@@ -158,7 +158,7 @@ export default function Footer() {
                 aria-label={social.icon.split(":")[1]}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/10 hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-md hover:shadow-yellow-400/40 transform hover:scale-110"
+                className="p-3 rounded-full bg-white/10 hover:bg-[#f3ce00] hover:text-black transition-all duration-300 shadow-md hover:shadow-[#f3ce00]/40 transform hover:scale-110"
               >
                 <Icon icon={social.icon} className="text-xl sm:text-2xl" />
               </Link>
@@ -173,7 +173,7 @@ export default function Footer() {
       <div
         className="max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 
              py-6 pb-20 flex flex-col sm:flex-row items-center 
-             justify-between gap-3 text-gray-400 text-xs sm:text-sm"
+             justify-between gap-3 tex[#f3ce00] text-xs sm:text-sm"
       >
         <p>
           &copy; {new Date().getFullYear()} D&apos;Governor’s Place. All rights
@@ -182,13 +182,13 @@ export default function Footer() {
         <div className="flex gap-5">
           <Link
             href="/privacy-policy"
-            className="hover:text-yellow-400 transition-colors duration-300"
+            className="hover:text-[#f3ce00] transition-colors duration-300"
           >
             Privacy Policy
           </Link>
           <Link
             href="/terms"
-            className="hover:text-yellow-400 transition-colors duration-300"
+            className="hover:text-[#f3ce00] transition-colors duration-300"
           >
             Terms of Service
           </Link>

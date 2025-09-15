@@ -42,7 +42,7 @@ export default function MapPreview() {
         >
           <Icon
             icon="mdi:navigation-variant-outline"
-            className="w-4 h-4 text-yellow-400"
+            className="w-4 h-4 text-[#f3ce00]"
           />
           Open in Maps
         </Link>
