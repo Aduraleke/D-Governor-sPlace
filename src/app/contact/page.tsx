@@ -1,23 +1,17 @@
 "use client";
 
 import React from "react";
-import { motion, Variants, useReducedMotion } from "framer-motion";
+import { motion,  } from "framer-motion";
 import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
 import MapPreview from "./MapPreview";
 
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
+
 
 export default function ContactSection() {
-  const reduceMotion = useReducedMotion();
-  const initialState = reduceMotion ? "show" : "hidden";
-  const whileInViewState = reduceMotion ? undefined : "show";
+
+
+
 
   return (
     <section
@@ -35,11 +29,10 @@ export default function ContactSection() {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 py-20 lg:py-28">
-        <motion.div
-          variants={container}
-          initial={initialState}
-          whileInView={whileInViewState}
-          viewport={{ amount: 0.3, once: true }}
+       <motion.div
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.9 }}
           className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-14 lg:gap-20 items-start"
         >
           <ContactInfo />
