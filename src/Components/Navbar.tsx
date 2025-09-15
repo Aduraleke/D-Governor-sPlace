@@ -6,7 +6,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/data/navLinks";
 import { motion } from "framer-motion";
 import { useTransition } from "react";
-import Loader from "./Loader";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -23,15 +22,12 @@ export default function Navbar() {
 
   return (
     <>
-      <Loader show={isPending} />
-
       {/* Top Navbar (Desktop) */}
       <motion.nav
         role="navigation"
         aria-label="Main Navigation"
         className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl 
                    bg-gradient-to-r from-black/70 via-black/60 to-black/70 
-                   dark:from-black/80 dark:via-black/75 dark:to-black/80
                    border-b border-white/10 shadow-lg transition-colors duration-300 
                    pt-[env(safe-area-inset-top)]"
         initial={{ y: -80, opacity: 0 }}
@@ -55,7 +51,6 @@ export default function Navbar() {
               priority
               quality={75}
               className="rounded-full w-8 sm:w-9 md:w-10"
-              sizes="(max-width: 768px) 32px, 36px"
             />
             <h1
               className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-wide 
@@ -87,10 +82,10 @@ export default function Navbar() {
                           : "text-white hover:text-[#f3ce00]"
                       }
                       hover:scale-105
+                      ${isPending && !isActive ? "opacity-50" : ""}
                       after:content-[''] after:absolute after:left-0 after:-bottom-1
                       after:w-0 hover:after:w-full after:h-[2px] after:bg-[#f3ce00]
-                      after:transition-[width,transform] after:duration-500 after:origin-left
-                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f3ce00] focus-visible:ring-offset-2`}
+                      after:transition-[width,transform] after:duration-500 after:origin-left`}
                   >
                     {link.name}
                   </button>
@@ -118,7 +113,9 @@ export default function Navbar() {
                 key={link.name}
                 onClick={() => handleClick(link.href)}
                 aria-current={isActive ? "page" : undefined}
-                className="relative flex flex-col items-center gap-1 px-3 py-2 flex-1 transition-transform active:scale-90"
+                className={`relative flex flex-col items-center gap-1 px-3 py-2 flex-1 transition-transform active:scale-90 ${
+                  isPending && !isActive ? "opacity-50" : ""
+                }`}
               >
                 <Icon
                   icon={link.icon}
@@ -133,14 +130,6 @@ export default function Navbar() {
                 >
                   {link.name}
                 </span>
-
-                {isActive && (
-                  <motion.span
-                    layoutId="activeIndicator"
-                    className="absolute -bottom-1 w-1.5 h-1.5 bg-[#f3ce00] rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-                )}
               </button>
             );
           })}
