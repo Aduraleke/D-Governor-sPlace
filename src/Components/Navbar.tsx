@@ -84,7 +84,12 @@ export default function Navbar() {
                       hover:scale-105
                       ${isPending && !isActive ? "opacity-50" : ""}
                       after:content-[''] after:absolute after:left-0 after:-bottom-1
-                      after:w-0 hover:after:w-full after:h-[2px] after:bg-[#f3ce00]
+                      ${
+                        isActive
+                          ? "after:w-full"
+                          : "after:w-0 hover:after:w-full"
+                      }
+                      after:h-[2px] after:bg-[#f3ce00]
                       after:transition-[width,transform] after:duration-500 after:origin-left`}
                   >
                     {link.name}
@@ -130,6 +135,16 @@ export default function Navbar() {
                 >
                   {link.name}
                 </span>
+
+                {/* Active dot indicator */}
+                <span
+                  className={`absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full transition-all duration-500
+                    ${
+                      isActive
+                        ? "w-2 h-2 bg-[#f3ce00]"
+                        : "w-0 h-0 bg-transparent"
+                    }`}
+                />
               </button>
             );
           })}
