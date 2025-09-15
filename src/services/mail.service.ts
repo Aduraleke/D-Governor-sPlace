@@ -44,7 +44,7 @@ export const COMPOSE_EMAIL = async (
 ): Promise<ApiResponse<BackendResponse>> => {
   try {
     const response: AxiosResponse<BackendResponse> = await axios.post(
-      "https://smtp.scaftechservices.com/mailing/compose",
+      "https://smtp.dgovernorsplace.com/mailing/compose",
       payload
     );
 
