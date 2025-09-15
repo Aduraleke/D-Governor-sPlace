@@ -114,19 +114,19 @@ export default function Page() {
     return null;
   }
 
- async function handleSubmit(e: React.FormEvent) {
-   e.preventDefault();
-   if (submitting) return;
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (submitting) return;
 
-   const err = validate(state);
-   if (err) return setError(err);
+    const err = validate(state);
+    if (err) return setError(err);
 
-   setError(null);
-   setSubmitting(true);
+    setError(null);
+    setSubmitting(true);
 
-   try {
-     // 📨 Format booking details for the email
-     const emailContent = `
+    try {
+      // 📨 Format booking details for the email
+      const emailContent = `
       📅 Date: ${state.date}
       🌙 Nights: ${state.nights}
       🏨 Apartment: ${state.apartment}
@@ -136,26 +136,26 @@ export default function Page() {
       📝 Requests: ${state.requests || "None"}
     `;
 
-     // 🔥 Send to backend mailer
-     const result = await COMPOSE_EMAIL({
-       to: "bookings@yourstudio.com", // change to your receiving email
-       subject: `New Apartment Booking - ${state.apartment}`,
-       content: emailContent,
-     });
+      // 🔥 Send to backend mailer
+      const result = await COMPOSE_EMAIL({
+        to: "bookings@yourstudio.com", // change to your receiving email
+        subject: `New Apartment Booking - ${state.apartment}`,
+        content: emailContent,
+      });
 
-     if (result.isOk) {
-       setSuccess(true);
-       dispatch({ type: "reset" }); // reset form
-       setTimeout(() => setSuccess(false), 3000);
-     } else {
-       setError(result.message);
-     }
-   } catch {
-     setError("Submission failed. Try again.");
-   } finally {
-     setSubmitting(false);
-   }
- }
+      if (result.isOk) {
+        setSuccess(true);
+        dispatch({ type: "reset" }); // reset form
+        setTimeout(() => setSuccess(false), 3000);
+      } else {
+        setError(result.message);
+      }
+    } catch {
+      setError("Submission failed. Try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <section
@@ -179,9 +179,6 @@ export default function Page() {
           <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
             Explore Our Apartments
           </h2>
-
-
-          
 
           <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {apartments.map((apt) => (
@@ -228,9 +225,8 @@ export default function Page() {
         {/* Booking Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
-          viewport={{ once: true }}
           className="grid grid-cols-1 gap-10 lg:grid-cols-[3fr_2fr] lg:gap-16"
         >
           <BookingForm

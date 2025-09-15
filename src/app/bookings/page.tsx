@@ -107,21 +107,19 @@ export default function Page() {
     return null;
   }
 
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (submitting) return;
 
+    const err = validate(activeState);
+    if (err) return setError(err);
 
- async function handleSubmit(e: React.FormEvent) {
-   e.preventDefault();
-   if (submitting) return;
+    setError(null);
+    setSubmitting(true);
 
-   const err = validate(activeState);
-   if (err) return setError(err);
-
-   setError(null);
-   setSubmitting(true);
-
-   try {
-     // 📨 build email content
-     const emailContent = `
+    try {
+      // 📨 build email content
+      const emailContent = `
       📅 Date: ${activeState.date}
       🏨 Apartment: ${activeState.apartment ?? "N/A"}
       🌙 Nights: ${activeState.nights ?? "N/A"}
@@ -134,28 +132,27 @@ export default function Page() {
       📝 Requests: ${activeState.requests || "None"}
     `;
 
-     // 🔥 send via backend mailer
-     const result = await COMPOSE_EMAIL({
-       to: "dgovernorsplace@gmail.com", // replace with your receiver email
-       subject: `New ${tab === "apartments" ? "Apartment" : "Studio"} Booking`,
-       content: emailContent,
-     });
+      // 🔥 send via backend mailer
+      const result = await COMPOSE_EMAIL({
+        to: "dgovernorsplace@gmail.com", // replace with your receiver email
+        subject: `New ${tab === "apartments" ? "Apartment" : "Studio"} Booking`,
+        content: emailContent,
+      });
 
-     if (result.isOk) {
-       setSuccess(true);
-       // reset form
-       activeDispatch({ type: "reset" });
-       setTimeout(() => setSuccess(false), 3000);
-     } else {
-       setError(result.message);
-     }
-   } catch {
-     setError("Submission failed. Try again.");
-   } finally {
-     setSubmitting(false);
-   }
- }
-
+      if (result.isOk) {
+        setSuccess(true);
+        // reset form
+        activeDispatch({ type: "reset" });
+        setTimeout(() => setSuccess(false), 3000);
+      } else {
+        setError(result.message);
+      }
+    } catch {
+      setError("Submission failed. Try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <section
@@ -224,10 +221,9 @@ export default function Page() {
 
         {/* Booking Grid */}
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
           className="grid grid-cols-1 gap-10 lg:grid-cols-[3fr_2fr] lg:gap-16"
         >
           {/* Form */}
