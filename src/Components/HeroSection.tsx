@@ -2,24 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion, useReducedMotion, Variants } from "framer-motion";
+import { motion, useReducedMotion,  } from "framer-motion";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { herofeatures } from "@/data/AboutData";
 
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 320, damping: 26 },
-  },
-};
 
 export default function HeroSection() {
   const reduceMotion = useReducedMotion();

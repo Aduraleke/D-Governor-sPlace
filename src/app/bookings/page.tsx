@@ -53,13 +53,7 @@ function reducer(state: FormState, action: Action): FormState {
 }
 
 // ---- Animations ----
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.18 },
-  },
-};
+
 
 const item: Variants = {
   hidden: { opacity: 0, y: 20 },
