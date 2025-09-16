@@ -50,7 +50,7 @@ export default function Navbar() {
               height={36}
               priority
               quality={75}
-              className="rounded-full w-8 sm:w-9 md:w-10"
+              className="rounded-full w-8 sm:w-9 md:w-10 cursor-pointer"
             />
             <h1
               className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-wide 
@@ -62,7 +62,7 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-6 lg:gap-10">
+          <div className="hidden lg:flex items-center gap-6 lg:gap-10 cursor-pointer">
             {navLinks.map((link, index) => {
               const isActive = pathname === link.href;
               return (
