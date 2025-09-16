@@ -75,7 +75,7 @@ export default function Navbar() {
                   <button
                     onClick={() => handleClick(link.href)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative font-semibold text-[clamp(0.85rem,1vw,1rem)] tracking-wide transition-all duration-500
+                    className={`relative font-semibold text-[clamp(0.85rem,1vw,1rem)] cursor-pointer tracking-wide transition-all duration-500
                       ${
                         isActive
                           ? "text-[#f3ce00]"
